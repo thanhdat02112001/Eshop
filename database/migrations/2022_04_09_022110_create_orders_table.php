@@ -19,7 +19,6 @@ class CreateOrdersTable extends Migration
             $table->double('order_total');
             $table->tinyInteger('payment_type');
             $table->unsignedBigInteger('delivery_id');
-            $table->foreign('delivery_id')->references('id')->on('deliveries')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -23,7 +23,6 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('product_status');
             $table->float('product_sale')->nullable();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

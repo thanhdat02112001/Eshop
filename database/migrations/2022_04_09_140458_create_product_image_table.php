@@ -20,7 +20,7 @@ class CreateProductImageTable extends Migration
             $table->string("image3")->nullable();
             $table->string("image4")->nullable();
             $table->string("image5")->nullable();
-            $table->foreignId("product_id")->references("id")->on("products")->onDelete('cascade');
+            $table->unsignedInteger('product_id');
             $table->timestamps();
         });
     }

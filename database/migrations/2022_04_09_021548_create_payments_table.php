@@ -21,9 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->String('code_bank');
             $table->dateTime('time');
             $table->unsignedBigInteger('delivery_id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('delivery_id')->references('id')->on('deliveries')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->timestamps();
         });
     }

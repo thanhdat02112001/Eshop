@@ -19,8 +19,7 @@ class CreateDeliveriesTable extends Migration
             $table->string('delivery_phone');
             $table->string('delivery_address');
             $table->string('delivery_note')->nullable();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('customer_id')->nullable();
             $table->timestamps();
         });
     }
