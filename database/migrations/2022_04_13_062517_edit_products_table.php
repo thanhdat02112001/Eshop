@@ -3,8 +3,10 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Doctrine\DBAL\Types\FloatType;
+use Doctrine\DBAL\Types\Type;
 
-return new class extends Migration
+class EditProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->index();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        if (!Type::hasType('double')) {
+            Type::addType('double', FloatType::class);
+        }
+        Schema::table('products', function($table) {
+            $table->double('product_price',15,2)->default(0)->change();
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        //
     }
-};
+}
