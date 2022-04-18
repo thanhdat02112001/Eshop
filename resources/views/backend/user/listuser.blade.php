@@ -49,28 +49,36 @@
 										</tr>
 									</thead>
 									<tbody>
+                                        @if ($users)
                                         @foreach ($users as $user)
                                         <tr>
 											<td>{{$user->id}}</td>
 											<td>{{$user->email}}</td>
 											<td>{{$user->name}}</td>
-											<td>{{$user->profile->address}}</td>
-                                            <td>{{$user->profile->phone}}</td>
+                                            @if ($user->profile)
+                                            <td>
+                                                {{$user->profile->address}}
+                                            </td>
+                                            <td>
+                                                {{$user->profile->phone}}
+                                            </td>
+                                            @else
+                                            <td></td>
+                                            <td></td>
+                                            @endif
+
 											<td>
 												<a href="{{route("user-edit", $user->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa</a>
 												<a href="{{route('user-delete', $user->id)}}" class="btn btn-danger" onclick="return confirm('bạn có chắc chắn xóa không ?');"><i class="fa fa-trash" aria-hidden="true"></i> Xóa</a>
 											</td>
                                         </tr>
                                         @endforeach
+                                        @endif
 									</tbody>
 								</table>
 								<div align='right'>
 									<ul class="pagination">
-										<li class="page-item"><a class="page-link" href="#">Trở lại</a></li>
-										<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item"><a class="page-link" href="#">2</a></li>
-										<li class="page-item"><a class="page-link" href="#">3</a></li>
-										<li class="page-item"><a class="page-link" href="#">tiếp theo</a></li>
+										{!! $users->links() !!}
 									</ul>
 								</div>
 							</div>

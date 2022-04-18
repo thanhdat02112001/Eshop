@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>password</label>
-                                        <input type="password" name="password" class="form-control"}}>
+                                        <input type="password" name="password" class="form-control">
                                         @error('password')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
@@ -41,31 +41,31 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Address</label>
-                                        <input type="address" name="address" class="form-control" value="{{$user->profile->address}}">
+                                        <input type="address" name="address" class="form-control" value="{{$user->profile ? $user->profile->address :""}}">
                                         @error('address')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="phone" name="phone" class="form-control" value="{{$user->profile->phone}}">
+                                        <input type="phone" name="phone" class="form-control" value="{{$user->profile ? $user->profile->phone : ""}}">
                                         @error('phone')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                     </div>
                                     <div class="form-group">
                                         <label for="">Date of Birth</label>
-                                        <input type="date" name="birthday" class="form-control" value="{{date("m-d-y", strtotime($user->profile->birthday))}}">
+                                        <input type="date" name="birthday" class="form-control" value="{{date("m-d-y", strtotime($user->profile ? $user->profile->birthday : ""))}}">
                                         @error('birthday')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                     </div>
                                     <div class="form-group">
                                         <label>Gender</label>
-                                        <select name="gender" id="" class="form-control" value="{{$user->profile->gender}}">
-                                            <option value="0" {{$user->profile->gender == 0 ? 'selected' : ""}} >Male</option>
-                                            <option value="1" {{$user->profile->gender == 1 ? 'selected' : ""}} >Female</option>
-                                            <option value="2" {{$user->profile->gender == 2 ? 'selected' : ""}} >Other</option>
+                                        <select name="gender" id="" class="form-control" value="{{$user->profile ? $user->profile->gender : ""}}">
+                                            <option value="0" {{$user->profile ? $user->profile->gender : "" == 0 ? 'selected' : ""}} >Male</option>
+                                            <option value="1" {{$user->profile ? $user->profile->gender : "" == 1 ? 'selected' : ""}} >Female</option>
+                                            <option value="2" {{$user->profile ? $user->profile->gender : "" == 2 ? 'selected' : ""}} >Other</option>
                                         </select>
 
                                         @error('gender')
