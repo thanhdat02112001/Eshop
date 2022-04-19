@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\PaymentController;
@@ -75,10 +76,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
     });
     //Route order
     Route::Group(["prefix" => "order"], function(){
-        Route::get('/', [\App\Http\Controllers\Admin\Order\OrderController::class, "index"]);
-        Route::get('/processed', [\App\Http\Controllers\Admin\Order\OrderController::class, "processed"]);
-        Route::get('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "detail"]);
-        Route::post('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "postDetail"]);
+        Route::get('/', [\App\Http\Controllers\Admin\Order\OrderController::class, "index"])->name('order.index');
+        Route::get('/processed', [\App\Http\Controllers\Admin\Order\OrderController::class, "processed"])->name('order.processed');
+        Route::get('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "detail"])->name('order.detail');
+        Route::post('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "postDetail"])->name('order.postDetail');
     });
 
     //Route blog
@@ -140,3 +141,5 @@ Route::post('/checkout/vnpay', [PaymentController::class, 'vnpay'])->name('onlin
 Route::get('/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vnpay.return');
 //buy now
 Route::post('/buynow', [CartController::class, 'buyNow']);
+//coupon
+Route::resource('coupon', CouponController::class);

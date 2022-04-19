@@ -14,7 +14,7 @@ class Order extends Model
 
     public function delivery()
     {
-        return $this->hasOne(Delivery::class);
+        return $this->belongsTo(Delivery::class);
     }
     public function orderDetails()
     {
