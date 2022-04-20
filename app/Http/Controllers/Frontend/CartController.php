@@ -140,7 +140,7 @@ class CartController extends Controller
         $total = request()->total;
         $coupon = Coupon::where('code', $code)->first();
         if ($coupon && $coupon->quantity - $coupon->used > 0) {
-            $total = $total - $total * $coupon->discount / 100;
+            $total = floor($total - $total * $coupon->discount / 100);
             $couponUpdate = [
                 'used' => $coupon->used + 1,
             ];
@@ -148,7 +148,7 @@ class CartController extends Controller
             return response()->json(
                 [
                     'message' => "Áp mã giảm giá thành công",
-                    'total' => $total,
+                    'total' => number_format($total),
                     'status' => 1,
                 ]
             );
@@ -156,7 +156,7 @@ class CartController extends Controller
         return response()->json(
             [
                 'message' => "Mã giảm giá không hợp lệ hoặc đã hết",
-                'total' => $total,
+                'total' => number_format($total),
                 'status' => 0,
             ]
         );
