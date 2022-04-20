@@ -3,6 +3,7 @@
 
 <head>
     @include('backend/master/layout/head')
+
 </head>
 <body>
 <!-- header -->

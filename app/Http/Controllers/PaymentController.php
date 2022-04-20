@@ -48,6 +48,7 @@ class PaymentController extends Controller
             if($delivery) {
                 $order =
                 [
+                    'order_code' => date("Ymd").$delivery->id,
                     'order_status' => 0,
                     'order_total' => $data['total'],
                     'payment_type' => $data['paymentMethod'],
@@ -208,6 +209,7 @@ class PaymentController extends Controller
             if($delivery) {
                 $order =
                 [
+                    'order_code' => date("Ymd").$delivery->id,
                     'order_status' => 0,
                     'order_total' => $data['total'],
                     'payment_type' => $data['paymentMethod'],

@@ -20,35 +20,31 @@
 					<div class="panel-body">
 						<div class="bootstrap-table">
 							<div class="table-responsive">
-								<a href="#" class="btn btn-warning"><span class="glyphicon glyphicon-gift"></span>Đơn Chưa xử lý</a>
+								<a href="{{route('order.index')}}" class="btn btn-warning"><span class="glyphicon glyphicon-gift"></span>Đơn Chưa xử lý</a>
 								<table class="table table-bordered" style="margin-top:20px;">
                                     <thead>
                                         <tr class="bg-primary">
-                                            <th>ID</th>
+                                            <th>Mã đơn hàng</th>
                                             <th>Tên khách hàng</th>
                                             <th>Email</th>
                                             <th>Sđt</th>
                                             <th>Địa chỉ</th>
                                             <th>Thời gian</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($orders as $order)
                                         <tr>
-                                            <td>2</td>
-                                            <td>Nguyễn văn An</td>
-                                            <td>Lu@gmail.com</td>
-                                            <td>015232412</td>
-                                            <td>Bắc ninh</td>
-                                            <td>2018-12-06 12:17:17</td>
+                                            <td>{{$order->order_code}}</td>
+                                            <td>{{$order->delivery->customer->name}}</td>
+                                            <td>{{$order->delivery->customer->email}}</td>
+                                            <td>{{$order->delivery->customer->phone}}</td>
+                                            <td>{{$order->delivery->customer->address}}</td>
+                                            <td>{{$order->updated_at}}</td>
+                                            <td><a href="{{route('order.detail', $order->id)}}" class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i>Xem</a></td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Nguyễn thế phúc</td>
-                                            <td>admin@gmail.com</td>
-                                            <td>0906013526</td>
-                                            <td>Thường tín , hà nội</td>
-                                            <td>2018-12-06 02:05:30</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 							</div>
