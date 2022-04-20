@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 /composer.json
 /public/uploads
+/docker
+/docker-compose.yml

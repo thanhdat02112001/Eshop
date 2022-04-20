@@ -131,6 +131,8 @@ Route::get('/cart', [CartController::class, 'index']);
 Route::post('/update-cart', [CartController::class, 'updateCart']);
 Route::post('/delete', [CartController::class, 'deleteFromCart']);
 Route::post('/clear-all', [CartController::class, 'clearAll']);
+//counpon
+Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
 
 /// Blog route
 Route::get('/blog', [\App\Http\Controllers\Frontend\BlogPage\BlogPageController::class, 'index'])->name('client-blog-index');

@@ -31,21 +31,21 @@
                     </li>
                     @php $total = $total + ($item["quantity"] * $item["price"]) @endphp
                 @endforeach
-
                 <li class="list-group-item d-flex justify-content-between">
                 <span>Total (VND)</span>
-                <strong>{{number_format($total)}} VND</strong>
+                <strong id="totalMoney">{{number_format($total)}} VND</strong>
                 </li>
             </ul>
 
-            {{-- <form class="card p-2">
+            <form class="card p-2" action="/apply-coupon" method="POST" id="coupon-form">
+                @csrf
                 <div class="input-group">
-                <input type="text" class="form-control" placeholder="Promo code">
+                <input type="text" class="form-control" placeholder="nhập voucher" id="coupon">
                 <div class="input-group-append">
-                    <button type="submit" class="btn btn-secondary">Redeem</button>
+                    <button type="submit" class="btn btn-success">áp dụng</button>
                 </div>
                 </div>
-            </form> --}}
+            </form>
             </div>
             <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Billing address</h4>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="address">Phone</label>
-                    <input type="hidden" name="total" value="{{$total}}">
+                    <input type="hidden" name="total" id="total" value="{{$total}}">
                     <input type="text" class="form-control" id="address" placeholder="enter your phone" name="phone" value="{{ $customer ? $customer->phone : "" }}">
                     @error('phone')
                     <div class="text-danger">{{$message}}</div>

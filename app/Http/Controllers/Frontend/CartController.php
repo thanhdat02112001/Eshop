@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coupon;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -129,6 +130,34 @@ class CartController extends Controller
                 'code' => 200,
                 'message' => 'Sản phẩm đã được thêm vào giỏ hàng',
                 'status' => 200,
+            ]
+        );
+    }
+
+    public function applyCoupon()
+    {
+        $code = request()->coupon;
+        $total = request()->total;
+        $coupon = Coupon::where('code', $code)->first();
+        if ($coupon && $coupon->quantity - $coupon->used > 0) {
+            $total = $total - $total * $coupon->discount / 100;
+            $couponUpdate = [
+                'used' => $coupon->used + 1,
+            ];
+            $coupon->update($couponUpdate);
+            return response()->json(
+                [
+                    'message' => "Áp mã giảm giá thành công",
+                    'total' => $total,
+                    'status' => 1,
+                ]
+            );
+        }
+        return response()->json(
+            [
+                'message' => "Mã giảm giá không hợp lệ hoặc đã hết",
+                'total' => $total,
+                'status' => 0,
             ]
         );
     }
