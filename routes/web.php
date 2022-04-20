@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Coupon\CouponController;
+use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\PaymentController;
@@ -79,7 +80,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
         Route::get('/', [\App\Http\Controllers\Admin\Order\OrderController::class, "index"])->name('order.index');
         Route::get('/processed', [\App\Http\Controllers\Admin\Order\OrderController::class, "processed"])->name('order.processed');
         Route::get('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "detail"])->name('order.detail');
-        Route::post('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "postDetail"])->name('order.postDetail');
+        Route::post('/update/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "update"])->name('order.update');
+        Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
     });
 
     //Route blog

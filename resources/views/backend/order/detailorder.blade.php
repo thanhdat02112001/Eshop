@@ -29,7 +29,8 @@
 													<strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> : {{$order->delivery->customer->name}}</strong> <br>
 													<strong><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : Số điện thoại:{{$order->delivery->customer->phone}}</strong>
 													<br>
-													<strong><span class="glyphicon glyphicon-send" aria-hidden="true"></span> : {{$order->delivery->customer->address}}</strong>
+													<strong><span class="glyphicon glyphicon-send" aria-hidden="true"></span> : {{$order->delivery->customer->address}}</strong> <br>
+                                                    <strong><span class="glyphicon glyphicon-list-alt   " aria-hidden="true"></span> : {{$order->order_code}}</strong>
 												</div>
 											</div>
 										</div>
@@ -87,16 +88,29 @@
 									<tbody>
 									</tbody>
 								</table>
-								<div class="alert alert-primary" role="alert" align='right'>
-                                    <form action="" method="POST">
+                                @if ($order->order_status == 0)
+                                <div class="alert alert-primary" role="alert" align='right'>
+                                    <form action="{{route('order.update', $order->id)}}" method="POST">
                                         @csrf
-                                        <a name="" id="" class="btn btn-success" href="#" role="button">Đã xử lý</a>
+                                        <button type="submit" id="" class="btn btn-success"  role="button">Đã xử lý</button>
                                     </form>
-                                    <form action="" method="POST">
+                                    <form action="{{route('order.destroy', $order->id)}}" method="POST">
                                         @csrf
-                                        <a href="" class="btn btn-danger">Hủy</a>
+                                        @method('delete')
+                                        <button class="btn btn-danger">Hủy</button>
                                     </form>
 								</div>
+                                @else
+                                @if ($order->order_status == 1)
+                                    <div class="alert alert-primary" align="right">
+                                        <button class="btn btn-success">Thành công</button>
+                                    </div>
+                                @else
+                                    <div class="alert alert-primary" align="right">
+                                        <button class="btn btn-danger">Đã hủy</button>
+                                    </div>
+                                @endif
+                                @endif
 							</div>
 						</div>
 						<div class="clearfix"></div>

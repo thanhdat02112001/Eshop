@@ -10,7 +10,7 @@ class Order extends Model
     use HasFactory;
 
     protected $table = 'orders';
-    protected $fillable = ['order_status', 'order_total', 'payment_type', 'delivery_id'];
+    protected $fillable = ['order_status', 'order_total', 'payment_type', 'delivery_id','order_code'];
 
     public function delivery()
     {
