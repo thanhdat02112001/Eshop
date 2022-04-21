@@ -149,7 +149,7 @@
                                             </a>
                                         </div>
                                         <div class="pro-price">
-                                            <p class="">5,300,000₫</p>
+                                            <p class="">{{number_format($newProduct->product_price)}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@
                             <div class="col-md-4">
                                 <div class="post_item">
                                     <div class="post_featured w-100">
-                                        <a href="#" title="Adidas EQT Cushion ADV">
+                                        <a href="{{route('client-blog-detail', ['id' => $blog->id])}}" title="Adidas EQT Cushion ADV">
                                             <img style="height: 200px;" class="img-resize w-100" style="padding-bottom:15px;"
                                                  src="/uploads/{{ $blog->blog_image }}"
                                                  alt="{{ $blog->blog_title }}">
@@ -194,7 +194,7 @@
                                     <div class="pro-text">
                                         <h3 class="post_title">
                                             <a style=" color: black;
-                                font-size: 18px;text-decoration: none;" href="#" inspiration pack>
+                                font-size: 18px;text-decoration: none;" href="{{route('client-blog-detail', ['id' => $blog->id])}}" inspiration pack>
                                                 {{$blog->blog_title}}
                                             </a>
                                         </h3>

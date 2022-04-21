@@ -2,10 +2,9 @@
 
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Order\OrderController;
-use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\Customer\CustomerController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Requests\CustomerRequest;
 use Illuminate\Support\Facades\Route;
 
 /*

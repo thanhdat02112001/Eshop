@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Customer;
+namespace App\Http\Controllers\Frontend\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use App\Http\Requests\LoginRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use function redirect;
+use function view;
 
 class CustomerController extends Controller
 {
