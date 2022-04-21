@@ -98,7 +98,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
     Route::get('/contact', [\App\Http\Controllers\Admin\Contact\ContactController::class, "index"])->name('contact-home');
     Route::get('/contact/delete', [\App\Http\Controllers\Admin\Contact\ContactController::class, "delete"])->name('contact-delete');
 
-
+    //coupon
+    Route::resource('coupon', CouponController::class);
 });
 
 
@@ -145,5 +146,4 @@ Route::post('/checkout/vnpay', [PaymentController::class, 'vnpay'])->name('onlin
 Route::get('/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vnpay.return');
 //buy now
 Route::post('/buynow', [CartController::class, 'buyNow']);
-//coupon
-Route::resource('coupon', CouponController::class);
+
