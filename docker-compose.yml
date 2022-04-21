@@ -38,7 +38,11 @@ services:
     build:
       context: .
       dockerfile: ./docker/Dockerfile
+<<<<<<< Updated upstream
     container_name: php_electronic_shop
+=======
+    container_name: electronic_shop
+>>>>>>> Stashed changes
     volumes:
       - ./:/var/www/html
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini

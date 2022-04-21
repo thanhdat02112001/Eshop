@@ -16,10 +16,10 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->integer('like');
-            $table->integer('dislike');
-            $table->unsignedBigInteger('customer_id');
-            $table->unsignedBigInteger('product_id');
+            $table->string('fullname');
+            $table->string('email');
+            $table->bigInteger('product_id');
+            $table->bigInteger('blog_id');
             $table->timestamps();
         });
     }

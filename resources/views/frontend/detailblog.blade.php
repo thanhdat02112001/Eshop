@@ -115,6 +115,70 @@
         </div>
         </div>
     </div>
+    <div id="comment-wrapper">
+        <div class="container">
+            <div class="be-comment-block">
+                <h1 class="comments-title">Comments ({{count($comments)}})</h1>
+                @if($comments)
+                    @foreach($comments as $comment)
+                        <div class="be-comment">
+                            <div class="be-img-comment">
+                                <a href="#">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                         class="be-ava-comment">
+                                </a>
+                            </div>
+                            <div class="be-comment-content">
+            <span class="be-comment-name">
+                <a href="blog-detail-2.html">{{$comment->fullname}}</a>
+                </span>
+                                <span class="be-comment-time">
+                <i class="fa fa-clock-o"></i>
+                {{$comment->started_at}}
+            </span>
+
+                                <p class="be-comment-text">
+                                    {{$comment->content}}
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+                <ul class="pagination">
+                    {{ $comments->links('pagination::bootstrap-4') }}
+                </ul>
+                <form class="form-block" method="post"
+                      action="{{route('client-comment-blog-store', ['id' => $blog->id])}}">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group fl_icon">
+                                <div class="icon"><i class="fa fa-user"></i></div>
+                                <input class="form-input" value="{{ $customer ? $customer->name : "" }}"
+                                       name="fullname" type="text" placeholder="Your name">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 fl_icon">
+                            <div class="form-group fl_icon">
+                                <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                                <input class="form-input" value="{{ $customer ? $customer->email : "" }}"
+                                       name="email" type="text" placeholder="Your email">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 w-100 p-3">
+                            <div class="form-group">
+                                <textarea class="form-input" name="comment_content" required=""
+                                          placeholder="Your text"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary center-block">submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 @endsection

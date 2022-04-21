@@ -17,5 +17,6 @@ class ContactController extends Controller
     public function delete ($id) {
         Contact::destroy($id);
 
+        return redirect()->back()->with('success', 'Xóa phản hồi thành công');
     }
 }

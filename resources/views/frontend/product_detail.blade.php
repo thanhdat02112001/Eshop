@@ -42,25 +42,25 @@
                                         <div class="product-gallery__thumbs thumb-fix">
                                             <div class="product-gallery__thumb active " id="imgg1">
                                                 <a class="product-gallery__thumb-placeholder"
-                                                href="javascript:void(0);"
-                                                data-image="/uploads/{{$product->image->image1}}"
-                                                data-zoom-image="/uploads/{{$product->image->image1}}">
+                                                   href="javascript:void(0);"
+                                                   data-image="/uploads/{{$product->image->image1}}"
+                                                   data-zoom-image="/uploads/{{$product->image->image1}}">
                                                     <img src="/uploads/{{$product->image->image1}}"
-                                                        data-image="/uploads/{{$product->image->image1}}"
-                                                        alt="{{$product->product_name}}"
-                                                        grape>
+                                                         data-image="/uploads/{{$product->image->image1}}"
+                                                         alt="{{$product->product_name}}"
+                                                         grape>
                                                 </a>
                                             </div>
                                             @for ($i = 2; $i < $product->image->total_image; $i++)
                                                 <div class="product-gallery__thumb  " id="imgg{{$i}}">
                                                     <a class="product-gallery__thumb-placeholder"
-                                                    href="javascript:void(0);"
-                                                    data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                    data-zoom-image="/uploads/{!!$product->image->{'image'.$i}!!}">
+                                                       href="javascript:void(0);"
+                                                       data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
+                                                       data-zoom-image="/uploads/{!!$product->image->{'image'.$i}!!}">
                                                         <img src="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                            data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                            alt="{{$product->product_name}}"
-                                                            grape>
+                                                             data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
+                                                             alt="{{$product->product_name}}"
+                                                             grape>
                                                     </a>
                                                 </div>
                                             @endfor
@@ -70,24 +70,24 @@
                                         <ul id="sliderproduct" class="site-box-content slide_product">
                                             <li class="product-gallery-item gallery-item current " id="imgg1a">
                                                 <img class="product-image-feature "
-                                                    src="/uploads/{{$product->image->image1}}"
-                                                    alt="{{$product->product_name}}" grape="">
+                                                     src="/uploads/{{$product->image->image1}}"
+                                                     alt="{{$product->product_name}}" grape="">
                                             </li>
                                             @for ($i = 2; $i < $product->image->total_image; $i++)
                                                 <li class="product-gallery-item gallery-item  " id="imgg{{$i}}a">
                                                     <img class="product-image-feature "
-                                                        src="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                        alt="{{$product->product_name}}" grape="">
+                                                         src="/uploads/{!!$product->image->{'image'.$i}!!}"
+                                                         alt="{{$product->product_name}}" grape="">
                                                 </li>
                                             @endfor
                                         </ul>
                                         <div class="product-image__button">
                                             <div id="product-zoom-in" class="product-zoom icon-pr-fix"
-                                                aria-label="Zoom in" title="Zoom in">
+                                                 aria-label="Zoom in" title="Zoom in">
                                                 <span class="zoom-in" aria-hidden="true">
                                                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                    viewBox="0 0 36 36" style="enable-background:new 0 0 36 36; width:
+                                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                     viewBox="0 0 36 36" style="enable-background:new 0 0 36 36; width:
                                                     30px; height: 30px;" xml:space="preserve">
                                                     <polyline points="6,14 9,11 14,16 16,14 11,9
                                                     14,6 6,6">
@@ -115,12 +115,12 @@
                                             <div class="item">
                                                 <div class="product-gallery__thumb ">
                                                     <a class=" product-gallery__thumb-placeholder"
-                                                    href="javascript:void(0);"
-                                                    data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                    data-zoom-image="/uploads/{!!$product->image->{'image'.$i}!!}">
+                                                       href="javascript:void(0);"
+                                                       data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
+                                                       data-zoom-image="/uploads/{!!$product->image->{'image'.$i}!!}">
                                                         <img src="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                            data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
-                                                            alt="{{$product->product_name}}" grape="">
+                                                             data-image="/uploads/{!!$product->image->{'image'.$i}!!}"
+                                                             alt="{{$product->product_name}}" grape="">
                                                     </a>
                                                 </div>
                                             </div>
@@ -136,17 +136,20 @@
                                         <span id="pro_sku">SKU: {{$product->product_code}}</span>
                                     </div>
                                     <div class="product-price" id="price-preview"><span
-                                            class="pro-price">Giá: {{number_format($product->product_price)}}₫</span></div>
-                                    <form id="add-item-form" action="/add-to-cart" method="post" class="variants clearfix">
+                                            class="pro-price">Giá: {{number_format($product->product_price)}}₫</span>
+                                    </div>
+                                    <form id="add-item-form" action="/add-to-cart" method="post"
+                                          class="variants clearfix">
                                         @csrf
                                         <div class="selector-actions">
                                             <div class="quantity-area clearfix quantity">
-                                                <input type="hidden" id="product_id" name="product_id" value="{{$product->id}}">
+                                                <input type="hidden" id="product_id" name="product_id"
+                                                       value="{{$product->id}}">
                                                 <input type="button" value="-"
-                                                    class="qty-btn minus" >
+                                                       class="qty-btn minus">
                                                 <input type="text" id="quantity" name="qty-input" value="1" min="1"
-                                                    class="quantity-selector qty-input">
-                                                <input type="button" value="+" class="qty-btn  plus" >
+                                                       class="quantity-selector qty-input">
+                                                <input type="button" value="+" class="qty-btn  plus">
                                             </div>
                                             <div class="wrap-addcart clearfix">
                                                 <div class="row-flex">
@@ -154,16 +157,16 @@
                                                         Thêm vao gio hang
                                                     </button>
                                                     <form action="/buynow" method="POST">
-                                                    @csrf
-                                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <button type="submit" class="buy-now button"
-                                                            style="display: block;">Mua
-                                                        ngay
-                                                    </button>
-                                                </form>
+                                                        @csrf
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                        <button type="submit" class="buy-now button"
+                                                                style="display: block;">Mua
+                                                            ngay
+                                                        </button>
+                                                    </form>
                                                 </div>
                                                 <a href="" target="_blank" class="button btn-check"
-                                                style="color: #ffffff;text-decoration:none;"><span>Click
+                                                   style="color: #ffffff;text-decoration:none;"><span>Click
                         nhận mã giảm giá ngay
                         !</span></a>
                                             </div>
@@ -215,8 +218,8 @@
                                                         src="frontend/images/shoes/800502_01_e92c3b2bb8764b52a791846d84a3a360_grande.jpg"
                                                         alt="Adidas EQT Cushion ADV" class="lazyloaded">
                                                     <img src="frontend/images/shoes/shoes fade 1.jpg"
-                                                        alt="Adidas EQT Cushion ADV"
-                                                        class="lazyloaded">
+                                                         alt="Adidas EQT Cushion ADV"
+                                                         class="lazyloaded">
                                                 </a>
 
                                             </div>
@@ -224,7 +227,7 @@
                                                 <div class="pro-text">
                                                     <a style="color: black;
                             font-size: 14px;text-decoration: none;" href="#" title="Adidas EQT Cushion ADV" inspiration
-                                                    pack>
+                                                       pack>
                                                         Adidas EQT Cushion ADV "North America"
                                                     </a>
                                                 </div>
@@ -243,8 +246,8 @@
                                                         alt="Adidas Nmd R1"
                                                         class="lazyloaded">
                                                     <img src="frontend/images/shoes/shoes fade 2.jpg"
-                                                        alt="Adidas Nmd R1"
-                                                        class="lazyloaded">
+                                                         alt="Adidas Nmd R1"
+                                                         class="lazyloaded">
                                                 </a>
 
                                             </div>
@@ -269,8 +272,8 @@
                                                         src="frontend/images/shoes/805266_02_b8b2cdd1782246febf8879a44a7e5021_grande.jpg"
                                                         alt="Adidas PW Solar HU NMD" class="lazyloaded">
                                                     <img src="frontend/images/shoes/shoes fade 3.jpg"
-                                                        alt="Adidas PW Solar HU NMD"
-                                                        class="lazyloaded">
+                                                         alt="Adidas PW Solar HU NMD"
+                                                         class="lazyloaded">
                                                 </a>
 
                                             </div>
@@ -278,7 +281,7 @@
                                                 <div class="pro-text">
                                                     <a style="color: black;
                             font-size: 14px;text-decoration: none;" href="#" title="Adidas PW Solar HU NMD" inspiration
-                                                    pack>
+                                                       pack>
                                                         Adidas PW Solar HU NMD "Inspiration Pack"
                                                     </a>
                                                 </div>
@@ -296,15 +299,15 @@
                                                         src="frontend/images/shoes/801432_01_b16d089f8bda434bacfe4620e8480be1_grande.jpg"
                                                         alt="Adidas Ultraboost W" class="lazyloaded">
                                                     <img src="frontend/images/shoes/shoes fade 4.jpg"
-                                                        alt="Adidas Ultraboost W"
-                                                        class="lazyloaded">
+                                                         alt="Adidas Ultraboost W"
+                                                         class="lazyloaded">
                                                 </a>
                                             </div>
                                             <div class="product-detail clearfix">
                                                 <div class="pro-text">
                                                     <a style="color: black;
                             font-size: 14px;text-decoration: none;" href="#" title="Adidas Ultraboost W" inspiration
-                                                    pack>
+                                                       pack>
                                                         Adidas Ultraboost W
                                                     </a>
                                                 </div>
@@ -322,6 +325,70 @@
             </div>
         </div>
         <!-- show zoom detail product -->
+        <div id="comment-wrapper">
+            <div class="container">
+                <div class="be-comment-block">
+                    <h1 class="comments-title">Comments ({{count($comments)}})</h1>
+                    @if($comments)
+                        @foreach($comments as $comment)
+                            <div class="be-comment">
+                                <div class="be-img-comment">
+                                    <a href="#">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                             class="be-ava-comment">
+                                    </a>
+                                </div>
+                                <div class="be-comment-content">
+				<span class="be-comment-name">
+					<a href="blog-detail-2.html">{{$comment->fullname}}</a>
+					</span>
+                                    <span class="be-comment-time">
+					<i class="fa fa-clock-o"></i>
+					{{$comment->started_at}}
+				</span>
+
+                                    <p class="be-comment-text">
+                                        {{$comment->content}}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    <ul class="pagination">
+                        {{ $comments->links('pagination::bootstrap-4') }}
+                    </ul>
+                    <form class="form-block" method="post"
+                          action="{{route('client-comment-product-store', ['id' => $product->id])}}">
+                        @csrf
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group fl_icon">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <input class="form-input" value="{{ $customer ? $customer->name : "" }}"
+                                           name="fullname" type="text" placeholder="Your name">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 fl_icon">
+                                <div class="form-group fl_icon">
+                                    <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                                    <input class="form-input" value="{{ $customer ? $customer->email : "" }}"
+                                           name="email" type="text" placeholder="Your email">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 w-100 p-3">
+                                <div class="form-group">
+                                    <textarea class="form-input" name="comment_content" required=""
+                                              placeholder="Your text"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary center-block">submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- zoom -->
         <div class="product-zoom11">
             <div class="product-zom">

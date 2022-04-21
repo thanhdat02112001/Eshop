@@ -95,10 +95,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
 
     //Route contact
     Route::get('/contact', [\App\Http\Controllers\Admin\Contact\ContactController::class, "index"])->name('contact-home');
-    Route::get('/contact/delete', [\App\Http\Controllers\Admin\Contact\ContactController::class, "delete"])->name('contact-delete');
+    Route::get('/contact/delete/{id}', [\App\Http\Controllers\Admin\Contact\ContactController::class, "delete"])->name('contact-delete');
 
     //coupon
     Route::resource('coupon', CouponController::class);
+    //Route comment
+    Route::get('/comment', [\App\Http\Controllers\Admin\Comment\CommentController::class, "index"])->name('comment-home');
+    Route::get('/comment/delete/{id}', [\App\Http\Controllers\Admin\Comment\CommentController::class, "delete"])->name('comment-delete');
 });
 
 
@@ -146,3 +149,6 @@ Route::get('/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vn
 //buy now
 Route::post('/buynow', [CartController::class, 'buyNow']);
 
+//comment
+Route::post('/comment/store/product/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeProduct'])->name('client-comment-product-store');
+Route::post('/comment/store/blog/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeBlog'])->name('client-comment-blog-store');

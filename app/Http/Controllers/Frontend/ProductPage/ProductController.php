@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\ProductPage;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,7 +65,9 @@ class ProductController extends Controller
 
     public function productDetail ($id) {
         $product = Product::find($id);
-        return view('frontend.detailproduct', compact('product'));
+        $comments = Comment::where('product_id', $id)->paginate(6);
+        $customer = auth()->guard('customers')->user();
+        return view('frontend.product_detail', compact('product', 'comments', 'customer'));
     }
 
     public function productBrand ($brand) {
