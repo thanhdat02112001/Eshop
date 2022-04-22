@@ -19,4 +19,5 @@
 <link rel="stylesheet" href="{{asset("frontend/css/sign.css")}}">
 <link rel="stylesheet" href="{{asset("frontend/css/comment.css")}}">
 <link rel="stylesheet" href="{{asset("css/sign.css")}}" />
+<link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css'>
 <title>Sitde</title>

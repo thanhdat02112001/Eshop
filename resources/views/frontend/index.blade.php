@@ -1,6 +1,11 @@
 @extends('frontend.master.master')
 @section('content')
     <!-- Owl-Carousel -->
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
     <div class="owl-carousel owl-theme owl-carousel-setting">
         <div class="item"><img src="frontend/images/banner-macbook-air.jpg" class="d-block w-100" alt="..."></div>
         <div class="item"><img src="frontend/images/banner-chân-trang.jpg" class="d-block w-100" alt="..."></div>
@@ -36,17 +41,27 @@
                             </div>
                             <div class="product-detail clearfix">
                                 <div class="pro-text">
-                                    <a style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                    <a style=" color: black; font-size: 16px;text-decoration: none;" href="#" title="" inspiration pack>
                                         {{$sellProduct->product_name}}
                                     </a>
                                 </div>
-                                <div class="pro-text">
-                                    <a style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
-                                        <span>Đã bán: </span>{{$sellProduct->product_sale}}
+                                <div class="pro-price">
+                                    <p style="font-size:18px" class="text-danger mb-1">{{number_format($sellProduct->product_price)}}₫</p>
+                                </div>
+                                <div style="padding: 5px 25px" class="pro-price d-flex justify-content-between">
+                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                        <span>Đã bán: </span>{{$sellProduct->product_sale == null ? 0 : $sellProduct->product_sale}}
+                                    </a>
+                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                        <span>Còn lại: </span>{{$sellProduct->quantity - $sellProduct->product_sale}}
                                     </a>
                                 </div>
-                                <div class="pro-price">
-                                    <p class="">{{number_format($sellProduct->product_price)}}₫</p>
+                                <div class="pro-start">
+                                    <span class="fa fa-star {{ $sellProduct->rate >= 0 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $sellProduct->rate >= 1 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $sellProduct->rate >= 2 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $sellProduct->rate >= 3 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $sellProduct->rate >= 4 ? 'checked' : "" }}"></span>
                                 </div>
                             </div>
                         </div>
@@ -143,13 +158,27 @@
                                     </div>
                                     <div class="product-detail clearfix">
                                         <div class="pro-text">
-                                            <a style=" color: black;
-                        font-size: 14px;text-decoration: none;" href="#" title="Adidas Ultraboost W" inspiration pack>
+                                            <a style=" color: black; font-size: 16px;text-decoration: none;" href="#" title="Adidas Ultraboost W" inspiration pack>
                                                 {{$newProduct->product_name}}
                                             </a>
                                         </div>
                                         <div class="pro-price">
-                                            <p class="">{{number_format($newProduct->product_price)}}</p>
+                                            <p style="font-size:18px" class="text-danger mb-1">5,300,000₫</p>
+                                        </div>
+                                        <div style="padding: 5px 25px" class="pro-price d-flex justify-content-between">
+                                            <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                                <span>Đã bán: </span>{{$newProduct->product_sale == null ? 0 : $newProduct->product_sale}}
+                                            </a>
+                                            <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                                <span>Còn lại: </span>{{$newProduct->quantity - $newProduct->product_sale}}
+                                            </a>
+                                        </div>
+                                        <div class="pro-start">
+                                            <span class="fa fa-star {{ $newProduct->rate >= 0 ? 'checked' : "" }}"></span>
+                                            <span class="fa fa-star {{ $newProduct->rate >= 1 ? 'checked' : "" }}"></span>
+                                            <span class="fa fa-star {{ $newProduct->rate >= 2 ? 'checked' : "" }}"></span>
+                                            <span class="fa fa-star {{ $newProduct->rate >= 3 ? 'checked' : "" }}"></span>
+                                            <span class="fa fa-star {{ $newProduct->rate >= 4 ? 'checked' : "" }}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -157,8 +186,6 @@
                         </div>
                     @endforeach
                 </div>
-
-
             </div>
         </section>
         <section class="">
@@ -174,9 +201,7 @@
             </div>
             <!--New-->
             <div>
-
                 <div class="container">
-
                     <div class="row">
                         @foreach($blogs as $blog)
                             <div class="col-md-4">

@@ -3033,7 +3033,8 @@ div.item:hover {
     display: flex;
     justify-content: space-between;
     width: 100%;
-
     top: 50%;
     transform: translateY(-50%);
 }
+
+

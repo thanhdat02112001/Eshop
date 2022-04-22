@@ -1,6 +1,11 @@
 @extends('frontend.master.master')
 @section('content')
 <!--Banner-->
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
 <div>
     <div>
     <img class="w-100" src="frontend/images/banner_product_home_2.jpg" alt="Products">
@@ -276,6 +281,21 @@
                                 </div>
                                 <div class="pro-price">
                                     <p class="">{{number_format($product->product_price)}}₫</p>
+                                </div>
+                                <div class="pro-price d-flex justify-content-between">
+                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                        <span>Đã bán: </span>{{$product->product_sale == null ? 0 : $product->product_sale}}
+                                    </a>
+                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                        <span>Còn lại: </span>{{$product->quantity - $product->product_sale}}
+                                    </a>
+                                </div>
+                                <div class="pro-start">
+                                    <span class="fa fa-star {{ $product->rate >= 0 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $product->rate >= 1 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $product->rate >= 2 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $product->rate >= 3 ? 'checked' : "" }}"></span>
+                                    <span class="fa fa-star {{ $product->rate >= 4 ? 'checked' : "" }}"></span>
                                 </div>
                             </div>
                         </div>

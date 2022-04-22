@@ -31,4 +31,15 @@ class Product extends Model
     public function image() {
         return $this->hasOne(Image::class);
     }
+
+    public function getRateAttribute () {
+        $rates = Rate::where('product_id', $this->id)->get();
+        $total = 0;
+        foreach ($rates as $rate) {
+            $total += $rate->rate_number;
+        }
+
+        count($rates) > 0 ? $star = round($total/count($rates)) : $star = 0;
+        return $star ;
+    }
 }

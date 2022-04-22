@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Rate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -73,5 +74,23 @@ class ProductController extends Controller
     public function productBrand ($brand) {
         $products = Product::where('product_brand', $brand)->paginate(12);
         return view('frontend.brandproduct');
+    }
+
+    public function rate (Request $request, $id) {
+        $oldRate = Rate::where('customer_id', auth()->guard('customers')->user()->id)->where('product_id', $id)->first();
+        $data = [
+            'rate_number' => $request->star,
+            'rate_content' => "rate",
+            'customer_id' => auth()->guard('customers')->user()->id,
+            'product_id' => $id
+        ];
+
+        if($oldRate) {
+            $rate = Rate::find($oldRate->id);
+            $rate->update($data);
+        } else {
+            Rate::create($data);
+        }
+        return redirect()->back()->with('success', 'Cảm ơn đánh giá của bạn!');
     }
 }

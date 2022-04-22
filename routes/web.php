@@ -152,3 +152,6 @@ Route::post('/buynow', [CartController::class, 'buyNow']);
 //comment
 Route::post('/comment/store/product/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeProduct'])->name('client-comment-product-store');
 Route::post('/comment/store/blog/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeBlog'])->name('client-comment-blog-store');
+
+//rate
+Route::post('rate/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'rate'])->name('client-rate');

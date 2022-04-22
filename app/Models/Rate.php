@@ -10,5 +10,5 @@ class Rate extends Model
     use HasFactory;
 
     protected $table = 'rates';
-    protected $fillable = ['rate_number', 'rate_content', 'user_id', 'product_id'];
+    protected $fillable = ['rate_number', 'rate_content', 'customer_id', 'product_id'];
 }

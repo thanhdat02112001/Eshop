@@ -1,5 +1,48 @@
 @extends('frontend.master.master')
 @section('content')
+    <style>
+        div.stars {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input.star {
+            display: none;
+        }
+
+        label.star {
+            float: right;
+            padding: 10px;
+            font-size: 30px;
+            color: #444;
+            transition: all .2s;
+        }
+
+        input.star:checked ~ label.star:before {
+            content: '\f005';
+            color: #FD4;
+            transition: all .25s;
+        }
+
+        input.star-5:checked ~ label.star:before {
+            color: #FE7;
+            text-shadow: 0 0 20px #952;
+        }
+
+        input.star-1:checked ~ label.star:before {
+            color: #F62;
+        }
+
+        label.star:hover {
+            transform: rotate(-15deg) scale(1.3);
+        }
+
+        label.star:before {
+            content: '\f006';
+            font-family: FontAwesome;
+        }
+    </style>
     <!--  detail product -->
     <main class="">
         <div id="product" class="productDetail-page">
@@ -132,7 +175,6 @@
                                 <div class="product-content-desc-1">
                                     <div class="product-title product_data">
                                         <h1>{{$product->product_name}}</h1>
-
                                         <span id="pro_sku">SKU: {{$product->product_code}}</span>
                                     </div>
                                     <div class="product-price" id="price-preview"><span
@@ -166,9 +208,7 @@
                                                     </form>
                                                 </div>
                                                 <a href="" target="_blank" class="button btn-check"
-                                                   style="color: #ffffff;text-decoration:none;"><span>Click
-                        nhận mã giảm giá ngay
-                        !</span></a>
+                                                   style="color: #ffffff;text-decoration:none;"><span>Click nhận mã giảm giá ngay!</span></a>
                                             </div>
                                         </div>
                                     </form>
@@ -199,6 +239,29 @@
                                                     <li>Êm ái, độ bám tốt, chống trơn trượt.</li>
                                                 </ul>
                                             </div>
+                                            @if (auth()->guard('customers')->user())
+                                                <div style="border: 1px solid #678678; padding: 10px" class="rate-form text-center">
+                                                    <span> Bạn nghĩ sao về sản phẩm này ?</span>
+                                                    <div class="stars">
+                                                        <form method="post" action="{{route('client-rate', ['id' => $product->id])}}">
+                                                            @csrf
+                                                            <div class="group-star">
+                                                                <input class="star star-5" value="5" id="star-5" {{ $product->rate = 5 ? 'checked' : "" }} type="radio" name="star"/>
+                                                                <label class="star star-5" for="star-5"></label>
+                                                                <input class="star star-4" value="4" id="star-4" {{ $product->rate = 4 ? 'checked' : "" }} type="radio" name="star"/>
+                                                                <label class="star star-4" for="star-4"></label>
+                                                                <input class="star star-3" value="3" id="star-3" {{ $product->rate = 3 ? 'checked' : "" }} type="radio" name="star"/>
+                                                                <label class="star star-3" for="star-3"></label>
+                                                                <input class="star star-2" value="2" id="star-2" {{ $product->rate = 2 ? 'checked' : "" }} type="radio" name="star"/>
+                                                                <label class="star star-2" for="star-2"></label>
+                                                                <input class="star star-1" value="1" id="star-1" {{ $product->rate = 1 ? 'checked' : "" }} type="radio" name="star"/>
+                                                                <label class="star star-1" for="star-1"></label>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Gửi đánh giá</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -221,7 +284,6 @@
                                                          alt="Adidas EQT Cushion ADV"
                                                          class="lazyloaded">
                                                 </a>
-
                                             </div>
                                             <div class="product-detail clearfix">
                                                 <div class="pro-text">
