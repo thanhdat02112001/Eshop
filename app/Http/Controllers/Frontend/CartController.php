@@ -148,7 +148,7 @@ class CartController extends Controller
             return response()->json(
                 [
                     'message' => "Áp mã giảm giá thành công",
-                    'total' => number_format($total),
+                    'total' => $total,
                     'status' => 1,
                 ]
             );

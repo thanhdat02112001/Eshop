@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Order\OrderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Customer\CustomerController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -155,3 +156,5 @@ Route::post('/comment/store/blog/{id}', [\App\Http\Controllers\Frontend\Comment\
 
 //rate
 Route::post('rate/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'rate'])->name('client-rate');
+//search
+Route::get('/search', [SearchController::class, "search"]);
