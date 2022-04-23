@@ -43,6 +43,7 @@
 <script src="{{asset("frontend/js/cart.js")}}"></script>
 <script src="{{asset("frontend/js/coupon.js")}}"></script>
 <script src="{{asset("frontedn/js/productdetail.js")}}"></script>
+<script src="{{asset("frontend/js/search.js")}}"></script>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
