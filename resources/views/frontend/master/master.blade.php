@@ -30,6 +30,7 @@
 @include('frontend/master/layout/footer')
 </div>
 @include('frontend/master/layout/popup')
+</body>
 <script async defer crossorigin="anonymous" src="{{asset("frontend/plugins/sdk.js")}}"></script>
 <script src="{{asset("frontend/plugins/jquery-3.4.1/jquery-3.4.1.min.js")}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

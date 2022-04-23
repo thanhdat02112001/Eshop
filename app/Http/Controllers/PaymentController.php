@@ -136,7 +136,7 @@ class PaymentController extends Controller
         // $vnp_ExpireDate = $_POST['txtexpire'];
         $inputData = array(
             "vnp_Version" => "2.1.0",
-            "vnp_TmnCode" => env('VNP_TMN_CODE'),
+            "vnp_TmnCode" => 'PYCJV8H1',
             "vnp_Amount" => $vnp_Amount,
             "vnp_Command" => "pay",
             "vnp_CreateDate" => date('YmdHis'),
@@ -170,9 +170,9 @@ class PaymentController extends Controller
             $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
 
-        $vnp_Url = env('VNP_URL') . "?" . $query;
-        if (env('VNP_HASH_SECRET')) {
-            $vnpSecureHash =   hash_hmac('sha512', $hashdata, env('VNP_HASH_SECRET'));
+        $vnp_Url = 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html' . "?" . $query;
+        if ('JABJYDXVTQJCQTHBXKDWNDCEXVVPFIAT') {
+            $vnpSecureHash =   hash_hmac('sha512', $hashdata, 'JABJYDXVTQJCQTHBXKDWNDCEXVVPFIAT');
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(
