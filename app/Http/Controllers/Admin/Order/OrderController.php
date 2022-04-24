@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Facades\Excel;
 
-class OrderController extends Controller implements FromCollection
+class OrderController extends Controller
 {
     public function index () {
         $orders = Order::where('order_status', 0)->get();
@@ -58,7 +58,7 @@ class OrderController extends Controller implements FromCollection
         return collect($orders);
     }
 
-    public function exportCSV() {
-        return Excel::download(new Order(), 'order.xlsx');
-    }
+    // public function exportCSV() {
+    //     return Excel::download(new Order(), 'order.xlsx');
+    // }
 }

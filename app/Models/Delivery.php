@@ -10,7 +10,7 @@ class Delivery extends Model
     use HasFactory;
 
     protected $table = 'deliveries';
-    protected $fillable = ['delivery_email', 'delivery_phone', 'delivery_address', 'delivery_note', 'user_id'];
+    protected $fillable = ['delivery_email', 'delivery_phone', 'delivery_address', 'delivery_note', 'user_id', 'customer_name'];
 
     public function customer() {
         return $this->belongsTo(Customer::class);

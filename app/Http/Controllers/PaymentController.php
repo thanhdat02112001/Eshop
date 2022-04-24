@@ -38,13 +38,10 @@ class PaymentController extends Controller
                 'delivery_phone' => $data['phone'],
                 'delivery_address' => $data['address'],
                 'delivery_note' => $data['note'],
+                'customer_name' => $data['name'],
             ];
             //insert order
-            if ($customer) {
-                $delivery = $customer->deliveries()->create($delivery);
-            } else {
-                $delivery = Delivery::create($delivery);
-            }
+            $delivery = Delivery::create($delivery);
             if($delivery) {
                 $order =
                 [
@@ -199,13 +196,10 @@ class PaymentController extends Controller
                 'delivery_phone' => $data['phone'],
                 'delivery_address' => $data['address'],
                 'delivery_note' => $data['note'],
+                'customer_name' => $data['name'],
             ];
             //insert order
-            if ($customer) {
-                $delivery = $customer->deliveries()->create($delivery);
-            } else {
-                $delivery = Delivery::create($delivery);
-            }
+            $delivery = Delivery::create($delivery);
             if($delivery) {
                 $order =
                 [

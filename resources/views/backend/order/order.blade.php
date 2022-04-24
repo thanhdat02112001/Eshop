@@ -44,9 +44,9 @@
                                         @foreach ($orders as $order)
                                         <tr>
 											<td>{{$order->id}}</td>
-											<td>{{$order->delivery->customer->name}}</td>
-											<td>{{$order->delivery->customer->phone}}</td>
-											<td>{{$order->delivery->customer->address}}</td>
+											<td>{{$order->delivery->customer_name}}</td>
+											<td>{{$order->delivery->delivery_phone}}</td>
+											<td>{{$order->delivery->delivery_address}}</td>
 											<td>
 												<a href="{{route('order.detail', $order->id)}}" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i>Xử lý</a>
 											</td>

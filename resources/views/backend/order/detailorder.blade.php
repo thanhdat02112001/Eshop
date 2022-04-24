@@ -26,10 +26,10 @@
 											<div class="panel panel-blue">
 												<div class="panel-heading dark-overlay">Thông tin khách hàng</div>
 												<div class="panel-body">
-													<strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> : {{$order->delivery->customer->name}}</strong> <br>
-													<strong><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : Số điện thoại:{{$order->delivery->customer->phone}}</strong>
+													<strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span> : {{$order->delivery->customer_name}}</strong> <br>
+													<strong><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> : Số điện thoại:{{$order->delivery->delivery_phone}}</strong>
 													<br>
-													<strong><span class="glyphicon glyphicon-send" aria-hidden="true"></span> : {{$order->delivery->customer->address}}</strong> <br>
+													<strong><span class="glyphicon glyphicon-send" aria-hidden="true"></span> : {{$order->delivery->delivery_address}}</strong> <br>
                                                     <strong><span class="glyphicon glyphicon-list-alt   " aria-hidden="true"></span> : {{$order->order_code}}</strong>
 												</div>
 											</div>

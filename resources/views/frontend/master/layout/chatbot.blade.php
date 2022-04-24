@@ -178,7 +178,8 @@
                 "method": "POST",
                 "timeout": 0,
                 "headers": {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin":"*"
                 },
                 "data": JSON.stringify({
                     "text": value

@@ -21,7 +21,7 @@
 						<div class="bootstrap-table">
 							<div class="table-responsive">
 								<a href="{{route('order.index')}}" class="btn btn-warning"><span class="glyphicon glyphicon-gift"></span>Đơn Chưa xử lý</a>
-                                <a class="btn btn-primary" href="{{route('order.export')}}">Export đơn trong tháng</a>
+                                {{-- <a class="btn btn-primary" href="{{route('order.export')}}">Export đơn trong tháng</a> --}}
 								<table class="table table-bordered" style="margin-top:20px;">
                                     <thead>
                                         <tr class="bg-primary">
@@ -38,10 +38,10 @@
                                         @foreach ($orders as $order)
                                         <tr>
                                             <td>{{$order->order_code}}</td>
-                                            <td>{{$order->delivery->customer->name}}</td>
-                                            <td>{{$order->delivery->customer->email}}</td>
-                                            <td>{{$order->delivery->customer->phone}}</td>
-                                            <td>{{$order->delivery->customer->address}}</td>
+                                            <td>{{$order->delivery->customer_name}}</td>
+                                            <td>{{$order->delivery->delivery_email}}</td>
+                                            <td>{{$order->delivery->delivery_phone}}</td>
+                                            <td>{{$order->delivery->delivery_address}}</td>
                                             <td>{{$order->updated_at}}</td>
                                             <td><a href="{{route('order.detail', $order->id)}}" class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i>Xem</a></td>
                                         </tr>
