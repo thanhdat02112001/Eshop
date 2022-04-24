@@ -1,13 +1,13 @@
 {
-    "dell/product": "?brand=dell",
-    "asus/product": "?brand=asus",
-    "apple/product": "?brand=apple",
-    "lenovo/product": "?brand=lenovo",
-    "hp/product": "?brand=hp",
+    "dell/product": "/product?brand=dell",
+    "asus/product": "/product?brand=asus",
+    "apple/product": "/product?brand=apple",
+    "lenovo/product": "/product?brand=lenovo",
+    "hp/product": "/product?brand=hp",
 
-    "brand/laptop" : "?category=1",
-    "brand/chuột" : "?catgory=2",
-    "brand/bàn phím" : "?category=3",
-    "brand/tai nghe" : "?catgory=4",
-    "brand/màn hình" : "?category=5"
+    "brand/laptop" : "/product?category=1",
+    "brand/chuột" : "/product?catgory=2",
+    "brand/bàn phím" : "/product?category=3",
+    "brand/tai nghe" : "/product?catgory=4",
+    "brand/màn hình" : "/product?category=5"
 }
