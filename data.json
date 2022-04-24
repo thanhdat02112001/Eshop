@@ -6,7 +6,7 @@
     "hp/product": "/product?brand=hp",
 
     "brand/laptop" : "/product?category=1",
-    "brand/chuột" : "/product?catgory=2",
+    "brand/chuột" : "/product?category=2",
     "brand/bàn phím" : "/product?category=3",
     "brand/tai nghe" : "/product?catgory=4",
     "brand/màn hình" : "/product?category=5"

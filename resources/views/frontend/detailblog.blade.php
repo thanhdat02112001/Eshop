@@ -3,7 +3,7 @@
     <!--Banner-->
     <div>
         <div>
-            <img src="{{asset('frontend/images/collection_banner.jpg')}}" alt="Products">
+            <img src="{{asset('frontend/images/banner-macbook-air.jpg')}}" alt="Products">
         </div>
     </div>
     <div class="breadcrumb-shop">
@@ -178,7 +178,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary center-block">submit</button>
+                                <button type="submit" class="btn btn-primary center-block">Bình luận</button>
                             </div>
                         </div>
                     </form>

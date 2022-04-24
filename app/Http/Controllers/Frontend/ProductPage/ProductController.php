@@ -66,9 +66,10 @@ class ProductController extends Controller
 
     public function productDetail ($id) {
         $product = Product::find($id);
+        $relatedProducts = Product::where("category_id", $product->category_id)->paginate(3);
         $comments = Comment::where('product_id', $id)->paginate(6);
         $customer = auth()->guard('customers')->user();
-        return view('frontend.product_detail', compact('product', 'comments', 'customer'));
+        return view('frontend.product_detail', compact('product', 'comments', 'customer', 'relatedProducts'));
     }
 
     public function productBrand ($brand) {

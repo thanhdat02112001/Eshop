@@ -218,26 +218,7 @@
                                         </div>
                                         <div class="description-content">
                                             <div class="description-productdetail">
-                                                <p><span>Hiện đại và thời trang khi diện item mới
-                        của Nike. Màu sắc lạ mắt, chất liệu
-                        thoáng mát, nhẹ nhàng, phù hợp với những chàng
-                        trai yêu phong cách
-                        sports.</span><br><br></p>
-                                                <ul>
-                                                    <li>Chất liệu cao cấp EVA, PU, Cushlon, Phylon.</li>
-                                                    <li>Bền, chống bám bẩn, dễ dàng lau chùi. Mũi giày
-                                                        đầy đặn, form dáng chuẩn.
-                                                    </li>
-                                                    <li>Bảo vệ đầu ngón chân khi hoạt động. Có lớp lót
-                                                        đệm bên trong.
-                                                    </li>
-                                                    <li>Êm, di chuyển nhiều không bị đau chân. Cổ giày
-                                                        thiết kế đơn giản, vừa vặn.
-                                                    </li>
-                                                    <li>Di chuyển dễ dàng, thoải mái.</li>
-                                                    <li>Đế bằng chất liệu cao su<br></li>
-                                                    <li>Êm ái, độ bám tốt, chống trơn trượt.</li>
-                                                </ul>
+                                                <p>{{$product->product_description}}</p>
                                             </div>
                                             @if (auth()->guard('customers')->user())
                                                 <div style="border: 1px solid #678678; padding: 10px" class="rate-form text-center">
@@ -273,112 +254,49 @@
                             </div>
                             <div class="container">
                                 <div class="row">
+                                    @foreach($relatedProducts as $relatedProduct)
                                     <div class="col-md-3 col-sm-6 col-xs-6 col-6">
                                         <div class="product-block">
                                             <div class="product-img fade-box">
-                                                <a href="#" title="Adidas EQT Cushion ADV" class="img-resize">
+                                                <a href="{{route("client-product-detail",$relatedProduct->id)}}" title="{{$relatedProduct->product_name}}" class="img-resize">
                                                     <img
-                                                        src="frontend/images/shoes/800502_01_e92c3b2bb8764b52a791846d84a3a360_grande.jpg"
-                                                        alt="Adidas EQT Cushion ADV" class="lazyloaded">
-                                                    <img src="frontend/images/shoes/shoes fade 1.jpg"
-                                                         alt="Adidas EQT Cushion ADV"
-                                                         class="lazyloaded">
+                                                        src="/uploads/{{$relatedProduct->image->image1}}"
+                                                        alt="{{$relatedProduct->product_name}}" class="lazyloaded">
+                                                    <img
+                                                        src="/uploads/{{$relatedProduct->image->image2}}"
+                                                        alt="{{$relatedProduct->product_name}}" class="lazyloaded">
                                                 </a>
                                             </div>
                                             <div class="product-detail clearfix">
                                                 <div class="pro-text">
-                                                    <a style="color: black;
-                            font-size: 14px;text-decoration: none;" href="#" title="Adidas EQT Cushion ADV" inspiration
-                                                       pack>
-                                                        Adidas EQT Cushion ADV "North America"
+                                                    <a style=" color: black;
+                                                                            font-size: 14px;text-decoration: none;" href="#"
+                                                       title="{{$relatedProduct->product_name}}" inspiration pack>
+                                                        {{$relatedProduct->product_name}}
                                                     </a>
                                                 </div>
                                                 <div class="pro-price">
-                                                    <p class="">7,000,000₫</p>
+                                                    <p class="">{{number_format($relatedProduct->product_price)}}₫</p>
+                                                </div>
+                                                <div class="pro-price d-flex justify-content-between">
+                                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                                        <span>Đã bán: </span>{{$relatedProduct->product_sale == null ? 0 : $product->product_sale}}
+                                                    </a>
+                                                    <a class="text-secondary" style=" color: black; font-size: 14px;text-decoration: none;" href="#" title="" inspiration pack>
+                                                        <span>Còn lại: </span>{{$relatedProduct->quantity - $relatedProduct->product_sale}}
+                                                    </a>
+                                                </div>
+                                                <div class="pro-start">
+                                                    <span class="fa fa-star {{ $relatedProduct->rate >= 0 ? 'checked' : "" }}"></span>
+                                                    <span class="fa fa-star {{ $relatedProduct->rate >= 1 ? 'checked' : "" }}"></span>
+                                                    <span class="fa fa-star {{ $relatedProduct->rate >= 2 ? 'checked' : "" }}"></span>
+                                                    <span class="fa fa-star {{ $relatedProduct->rate >= 3 ? 'checked' : "" }}"></span>
+                                                    <span class="fa fa-star {{ $relatedProduct->rate >= 4 ? 'checked' : "" }}"></span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                                        <div class="product-block">
-                                            <div class="product-img fade-box">
-                                                <a href="#" title="Adidas Nmd R1" class="img-resize">
-                                                    <img
-                                                        src="frontend/images/shoes/201493_1_017364c87c3e4802a8cda5259e3d5a95_grande.jpg"
-                                                        alt="Adidas Nmd R1"
-                                                        class="lazyloaded">
-                                                    <img src="frontend/images/shoes/shoes fade 2.jpg"
-                                                         alt="Adidas Nmd R1"
-                                                         class="lazyloaded">
-                                                </a>
-
-                                            </div>
-                                            <div class="product-detail clearfix">
-                                                <div class="pro-text">
-                                                    <a style="color: black;
-                            font-size: 14px;text-decoration: none;" title="Adidas Nmd R1" href="">
-                                                        Adidas Nmd R1 "Villa Exclusive"
-                                                    </a>
-                                                </div>
-                                                <div class="pro-price">
-                                                    <p class="">7,000,000₫</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                                        <div class="product-block">
-                                            <div class="product-img fade-box">
-                                                <a href="#" title="Adidas PW Solar HU NMD" class="img-resize">
-                                                    <img
-                                                        src="frontend/images/shoes/805266_02_b8b2cdd1782246febf8879a44a7e5021_grande.jpg"
-                                                        alt="Adidas PW Solar HU NMD" class="lazyloaded">
-                                                    <img src="frontend/images/shoes/shoes fade 3.jpg"
-                                                         alt="Adidas PW Solar HU NMD"
-                                                         class="lazyloaded">
-                                                </a>
-
-                                            </div>
-                                            <div class="product-detail clearfix">
-                                                <div class="pro-text">
-                                                    <a style="color: black;
-                            font-size: 14px;text-decoration: none;" href="#" title="Adidas PW Solar HU NMD" inspiration
-                                                       pack>
-                                                        Adidas PW Solar HU NMD "Inspiration Pack"
-                                                    </a>
-                                                </div>
-                                                <div class="pro-price">
-                                                    <p class="">5,000,000₫</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 col-sm-6 col-xs-6 col-6">
-                                        <div class="product-block">
-                                            <div class="product-img fade-box">
-                                                <a href="#" title="Adidas Ultraboost W" class="img-resize">
-                                                    <img
-                                                        src="frontend/images/shoes/801432_01_b16d089f8bda434bacfe4620e8480be1_grande.jpg"
-                                                        alt="Adidas Ultraboost W" class="lazyloaded">
-                                                    <img src="frontend/images/shoes/shoes fade 4.jpg"
-                                                         alt="Adidas Ultraboost W"
-                                                         class="lazyloaded">
-                                                </a>
-                                            </div>
-                                            <div class="product-detail clearfix">
-                                                <div class="pro-text">
-                                                    <a style="color: black;
-                            font-size: 14px;text-decoration: none;" href="#" title="Adidas Ultraboost W" inspiration
-                                                       pack>
-                                                        Adidas Ultraboost W
-                                                    </a>
-                                                </div>
-                                                <div class="pro-price">
-                                                    <p class="">5,300,000₫</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                @endforeach
                                 </div>
                             </div>
                         </div>
@@ -444,7 +362,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 d-flex justify-content-end">
-                                <button type="submit" class="btn btn-primary center-block">submit</button>
+                                <button type="submit" class="btn btn-primary center-block">Bình luận</button>
                             </div>
                         </div>
                     </form>

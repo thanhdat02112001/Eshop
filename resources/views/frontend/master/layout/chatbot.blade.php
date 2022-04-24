@@ -154,14 +154,14 @@
                 <i class="fas fa-user"></i>
             </div>
             <div class="msg-header">
-                <p>Hello there, how can I help you?</p>
+                <p>Xin chào quý khách, em có thể giúp gì ạ?</p>
             </div>
         </div>
     </div>
     <div class="typing-field">
         <div class="input-data">
             <input id="data-input" type="text" placeholder="Type something here.." required>
-            <button id="send-btn">Send</button>
+            <button id="send-btn">Gửi</button>
         </div>
     </div>
 </div>

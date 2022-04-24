@@ -107,7 +107,7 @@
                             <article class="blog-loop">
                                 <div class="blog-post row">
                                     <div class="col-md-4 col-xs-12 col-sm-12">
-                                        <a href="detailblog.html" class="blog-post-thumbnail"
+                                        <a href="{{route('client-blog-detail',$blog->id)}}" class="blog-post-thumbnail"
                                            title="Adidas Falcon nổi bật mùa Hè với phối màu color block" rel="nofollow">
                                             <img style="height: 200px" class="w-100"
                                                  src="/uploads/{{$blog->blog_image}}"
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="col-md-8 col-xs-12 col-sm-12">
                                         <h3 class="blog-post-title">
-                                            <a href="#"
+                                            <a href="/blog/{{$blog->id}}"
                                                title="blog">{{$blog->blog_title}}</a>
                                         </h3>
                                         <div class="blog-post-meta">
