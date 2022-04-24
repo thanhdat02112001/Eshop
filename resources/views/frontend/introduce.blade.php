@@ -63,7 +63,7 @@
             <div class="box_image visible-lg visible-md">
                 <div class="banner">
                 <a href="">
-                    <img src="http://theme.hstatic.net/1000375638/1000480323/14/page_banner.jpg?v=321" alt="Runner Inn">
+                    <img src="{{asset('')}}" alt="Runner Inn">
                 </a>
                 </div>
             </div>
