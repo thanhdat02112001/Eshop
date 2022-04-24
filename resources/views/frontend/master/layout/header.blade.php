@@ -2,7 +2,9 @@
     <a style="color: #ffffff;text-decoration: none;" href="index.html"><marquee>MIỄN PHÍ VẬN CHUYỂN VỚI ĐƠN HÀNG NỘI THÀNH > 300K - ĐỔI TRẢ TRONG 30 NGÀY - ĐẢM BẢO CHẤT LƯỢNG</marquee></a>
 </div>
 <!--Navbar-->
-
+@php
+    header("Access-Control-Allow-Origin: *")
+@endphp
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
     <div class="container">
         <a class="navbar-brand" href="/">
@@ -320,17 +322,25 @@
             var value = $('#data-input').val()
             let msg = '<div class="user-inbox inbox"><div class="msg-header"><p>'+ value +'</p></div></div>';
             $("#form-chatbox").append(msg);
-            $.ajax({
-                url: '#',
-                type: 'POST',
-                data: 'text='+value,
-                success: function(result){
-                    let replay = '<div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>'+ result +'</p></div></div>';
-                    $(".form").append(replay);
-                    // when chat goes down the scroll bar automatically comes to the bottom
-                    $(".form").scrollTop($(".form")[0].scrollHeight);
-                }
+            var settings = {
+            "url": "http://0.0.0.0:5000/api",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "text": value
+            }),
+            };
+
+            $.ajax(settings).done(function (response) {
+            console.log(response.text);
+            let replay = '<div class="bot-inbox inbox"><div class="icon"><i class="fas fa-user"></i></div><div class="msg-header"><p>'+ response.text +'</p></div></div>';
+                $(".form").append(replay);
+                $(".form").scrollTop($(".form")[0].scrollHeight);
+                $('#data-input').val("");
             });
-        })
+        });
     });
 </script>

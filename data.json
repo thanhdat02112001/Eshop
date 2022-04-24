@@ -1,4 +1,13 @@
 {
-    "dell/product": "?brand=dell",
-    "asus/product": "?brand=asus"
+    "dell/product": "/product?brand=dell",
+    "asus/product": "/product?brand=asus",
+    "apple/product": "/product?brand=apple",
+    "lenovo/product": "/product?brand=lenovo",
+    "hp/product": "/product?brand=hp",
+
+    "brand/laptop" : "/product?category=1",
+    "brand/chuột" : "/product?catgory=2",
+    "brand/bàn phím" : "/product?category=3",
+    "brand/tai nghe" : "/product?catgory=4",
+    "brand/màn hình" : "/product?category=5"
 }
