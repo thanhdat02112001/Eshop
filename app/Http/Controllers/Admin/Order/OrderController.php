@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Order;
 
 use App\Http\Controllers\Controller;
-use App\Models\Delivery;
 use App\Models\Order;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Facades\Excel;
 
-class OrderController extends Controller
+class OrderController extends Controller implements FromCollection
 {
     public function index () {
         $orders = Order::where('order_status', 0)->get();
@@ -49,5 +49,16 @@ class OrderController extends Controller
             return redirect()->route('order.index')->with('success', 'Đơn hàng đã được hủy');
         }
         return redirect()->route('order.index')->with('error', 'Đã xảy ra lỗi');
+    }
+
+    public function collection()
+    {
+        // TODO: Implement collection() method.
+        $orders = Order::whereMonth('created_at', Carbon::now()->month)->where('order_status', 1)->get()->toArray();
+        return collect($orders);
+    }
+
+    public function exportCSV() {
+        return Excel::download(new Order(), 'order.xlsx');
     }
 }

@@ -2,7 +2,7 @@
     <div class="">
         <div class="hot_sp" style="padding-top: 70px;padding-bottom: 50px;">
             <h2 style="text-align:center;padding-top: 10px">
-                <a style="font-size: 28px;color: black;text-decoration: none" href="">Khách hàng và Runner Inn</a>
+                <a style="font-size: 28px;color: black;text-decoration: none" href="">Khách hàng và SITDE</a>
             </h2>
         </div>
         <div class="list-gallery clearfix">

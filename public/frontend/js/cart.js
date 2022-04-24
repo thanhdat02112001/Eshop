@@ -108,8 +108,8 @@ function loadCart()
         success: function (response) {
             $('#cart').html('');
             var parsed = jQuery.parseJSON(response)
-            var value = parsed; //Single Data Viewing
-            $('#cart').append($('<span class="badge badge-danger">Cart '+ value['totalcart'] +'</span>'));
+            var value = parsed;
+            $('#cart').append($('<i class="fa fa-shopping-cart"></i> '+ value['totalcart']));
         }
     });
 }

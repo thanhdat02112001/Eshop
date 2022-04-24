@@ -10,7 +10,7 @@
                         <div class="footer-content">
                             <p>Sitde Electronic trang mua sắm trực tuyến của thương hiệu máy tính, headphone, pc, phụ kiện, giúp bạn tiếp cận xu hướng công nghệ mới nhất.</p>
                             <div class="logo-footer">
-                                <img src="frontend/images/logo-bct.png" alt="Bộ Công Thương">
+                                <img src="{{asset('frontend/images/logo-bct.png')}}" alt="Bộ Công Thương">
                             </div>
                             <div class="social-list">
                                 <a href="#" class="fab fa-facebook"></a>
@@ -91,8 +91,6 @@
         <div class="container">
             <hr>
             <div class="main-footer--border" style="text-align:center;padding-bottom: 15px;">
-                <p>Copyright © 2019 <a href="https://runner-inn.myharavan.com"> Runner Inn</a>. <a target="_blank"
-                                                                                                   href="https://www.facebook.com/henrynguyen202">Powered by HuniBlue</a></p>
             </div>
         </div>
     </div>

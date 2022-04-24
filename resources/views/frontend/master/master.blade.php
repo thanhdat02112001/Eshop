@@ -30,6 +30,7 @@
 @include('frontend/master/layout/footer')
 </div>
 @include('frontend/master/layout/popup')
+@include('frontend/master/layout/chatbot')
 </body>
 <script async defer crossorigin="anonymous" src="{{asset("frontend/plugins/sdk.js")}}"></script>
 <script src="{{asset("frontend/plugins/jquery-3.4.1/jquery-3.4.1.min.js")}}"></script>
