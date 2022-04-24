@@ -54,7 +54,7 @@
                     <div class="block_content layered-category collapse" id="collapseExample1">
                         <div class="layered-content card card-body"  style="border:0;padding:0">
                         <ul class="menuList-links">
-                            <li class=""><a href="home.html" title="Trang chủ"><span>Trang chủ</span></a></li>
+                            <li class=""><a href="{{asset('/')}}" title="Trang chủ"><span>Trang chủ</span></a></li>
                             <li class="has-submenu level0 ">
                                 <a title="Sản phẩm" >Thương hiệu<span class="icon-plus-submenu" data-toggle="collapse"
                                                                    href="#collapseBrand" role="button" aria-expanded="false"
@@ -83,9 +83,9 @@
                                 </div>
                             </div>
                             </li>
-                            <li class=""><a href="introduce.html" title="Giới thiệu"><span>Giới thiệu</span></a></li>
-                            <li class=""><a href="blog.html" title="Blog"><span>Blog</span></a></li>
-                            <li class=""><a href="contact.html" title="Liên hệ"><span>Liên hệ</span></a></li>
+                            <li class=""><a href="{{asset('introduce')}}" title="Giới thiệu"><span>Giới thiệu</span></a></li>
+                            <li class=""><a href="{{asset('blog')}}" title="Blog"><span>Blog</span></a></li>
+                            <li class=""><a href="{{asset('contact')}}" title="Liên hệ"><span>Liên hệ</span></a></li>
                         </ul>
                         </div>
                     </div>

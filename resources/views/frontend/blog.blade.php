@@ -80,8 +80,8 @@
                                         <div class="collapse" id="collapseExample">
                                             <div class="card card-body" style="border:0">
                                                 <ul class="menu-product">
-                                                    <li><a href="detailproduct.html">Tư vấn thủ công</a></li>
-                                                    <li><a href="detailproduct.html">Tư vấn thông minh</a></li>
+                                                    <li><a href="{{asset('/contact')}}">Tư vấn thủ công</a></li>
+                                                    <li><a href="#" class="get-chat-box">Tư vấn thông minh</a></li>
                                                 </ul>
                                             </div>
                                         </div>

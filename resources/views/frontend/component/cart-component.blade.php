@@ -18,12 +18,6 @@
                         <div class="shopping-cart">
                             <div class="shopping-cart-table">
                                 <div class="table-responsive">
-                                    <div class="col-md-12 text-right mb-3">
-                                        <form action="/clear-all" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger clear_cart" onclick="return confirm('bạn có chắc muốn xóa hết giỏ hàng không?')">xóa giỏ hàng</button>
-                                        </form>
-                                    </div>
                                     <table class="table table-bordered my-auto  text-center">
                                         <thead>
                                             <tr>
@@ -83,10 +77,14 @@
                             </div><!-- /.shopping-cart-table -->
                             <div class="row">
 
-                                <div class="col-md-8 col-sm-12 estimate-ship-tax">
+                                <div class="col-md-8 col-sm-12 estimate-ship-tax d-flex">
                                     <div>
                                         <a href="/" class="btn btn-upper btn-warning outer-left-xs">Tiếp tục mua sắm</a>
                                     </div>
+                                    <form action="/clear-all" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger clear_cart" onclick="return confirm('bạn có chắc muốn xóa hết giỏ hàng không?')">xóa giỏ hàng</button>
+                                    </form>
                                 </div><!-- /.estimate-ship-tax -->
 
                                 <div class="col-md-4 col-sm-12 ">

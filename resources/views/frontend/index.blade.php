@@ -76,8 +76,8 @@
                     <div class="col-xs-12 col-sm-4 home-banner-pd">
                         <div class="block-banner-category">
                             <a href="#" class="link-banner wrap-flex-align flex-column">
-                                <div class="fg-image fade-box">
-                                    <img class="lazyloaded" src="frontend/images/shoes/block_home_category1_grande.jpg"
+                                <div class="fg-image fade-box w-100">
+                                    <img style="height: 200px" class="lazyloaded w-100" src="{{asset('frontend/images/44MlED.jpg')}}"
                                          alt="Shoes">
                                 </div>
                                 <figcaption class="caption_banner site-animation">
@@ -92,8 +92,8 @@
                     <div class="col-xs-12 col-sm-4 home-banner-pd">
                         <div class="block-banner-category">
                             <a href="#" class="link-banner wrap-flex-align flex-column">
-                                <div class="fg-image fade-box">
-                                    <img class="lazyloaded" src="frontend/images/shoes/block_home_category2_grande.jpg"
+                                <div class="fg-image fade-box w-100">
+                                    <img style="height: 200px" class="lazyloaded w-100" src="{{asset('frontend/images/hinh-nen-may-tinh-4k-game-min.jpg')}}"
                                          alt="Shoes">
                                 </div>
                                 <figcaption class="caption_banner site-animation">
@@ -108,8 +108,8 @@
                     <div class="col-xs-12 col-sm-4 home-banner-pd">
                         <div class="block-banner-category">
                             <a href="#" class="link-banner wrap-flex-align flex-column">
-                                <div class="fg-image">
-                                    <img class="lazyloaded" src="frontend/images/shoes/block_home_category3_grande.jpg"
+                                <div class="fg-image w-100">
+                                    <img style="height: 200px" class="lazyloaded w-100" src="{{asset('frontend/images/images.jpg')}}"
                                          alt="Shoes">
                                 </div>
                                 <figcaption class="caption_banner site-animation">

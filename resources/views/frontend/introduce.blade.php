@@ -38,25 +38,24 @@
                     <div class="layered layered-category">
                         <div class="layered-content">
                             <ul class="menuList-links">
-                            <li class=""><a href="home.html" title="Trang chủ"><span>Trang chủ</span></a></li>
-                            <li class=""><a href="product.html" title="Bộ sưu tập"><span>Bộ sưu tập</span></a></li>
+                            <li class=""><a href="{{asset('/')}}" title="Trang chủ"><span>Trang chủ</span></a></li>
+                            <li class=""><a href="{{asset('/product')}}" title="Bộ sưu tập"><span>Bộ sưu tập</span></a></li>
                             <li class="has-submenu level0 ">
-                                <a title="Sản phẩm" >Sản phẩm <span class="icon-plus-submenu" data-toggle="collapse"
+                                <a title="Sản phẩm" >Hỗ trợ tư vấn <span class="icon-plus-submenu" data-toggle="collapse"
                                     href="#collapseExample" role="button" aria-expanded="false"
                                     aria-controls="collapseExample"></span></a>
                                 <div class="collapse" id="collapseExample">
                                     <div class="card card-body" style="border:0">
                                     <ul class="menu-product">
-                                        <li><a href="detailproduct.html" title="Sản phẩm - Style 1">Sản phẩm - Style 1</a></li>
-                                        <li><a href="detailproduct.html" title="Sản phẩm - Style 2">Sản phẩm - Style 2</a></li>
-                                        <li><a href="detailproduct.html" title="Sản phẩm - Style 3">Sản phẩm - Style 3</a></li>
+                                        <li><a href="{{asset('/contact')}}" title="Sản phẩm - Style 1">Tư vấn thủ công</a></li>
+                                        <li><a href="#" class="get-chat-box" title="Sản phẩm - Style 2">Tư vấn thông minh</a></li>
                                     </ul>
                                     </div>
                                 </div>
                                 </li>
-                            <li class="active"><a href="introduce.html" title="Giới thiệu"><span>Giới thiệu</span></a></li>
-                            <li class=""><a href="blog.html" title="Blog"><span>Blog</span></a></li>
-                            <li class=""><a href="contact.html" title="Liên hệ"><span>Liên hệ</span></a></li>
+                            <li class="active"><a href="{{asset('/introduce')}}" title="Giới thiệu"><span>Giới thiệu</span></a></li>
+                            <li class=""><a href="{{asset('/blog')}}" title="Blog"><span>Blog</span></a></li>
+                            <li class=""><a href="{{asset('/contact')}}" title="Liên hệ"><span>Liên hệ</span></a></li>
                             </ul>
                         </div>
                     </div>

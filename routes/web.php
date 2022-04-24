@@ -82,6 +82,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
         Route::get('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "detail"])->name('order.detail');
         Route::post('/update/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "update"])->name('order.update');
         Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+        Route::get('/export', [OrderController::class, 'exportCSV'])->name('order.export');
     });
 
     //Route blog

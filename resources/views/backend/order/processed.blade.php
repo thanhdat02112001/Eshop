@@ -21,6 +21,7 @@
 						<div class="bootstrap-table">
 							<div class="table-responsive">
 								<a href="{{route('order.index')}}" class="btn btn-warning"><span class="glyphicon glyphicon-gift"></span>Đơn Chưa xử lý</a>
+                                <a class="btn btn-primary" href="{{route('order.export')}}">Export đơn trong tháng</a>
 								<table class="table table-bordered" style="margin-top:20px;">
                                     <thead>
                                         <tr class="bg-primary">

@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index () {
         $products = Product::all();
-//
+
 //        $products = new Product();
 //        if (isset($_GET['sort_by'])) {
 //            if ($_GET['sort_by'] == 'tang_dan') {
@@ -45,15 +45,15 @@ class ProductController extends Controller
         }
         if (isset($_GET['price'])) {
             if ($_GET['price'] == 1) {
-                $products = $products->where('product_price', '<', 100000);
+                $products = $products->where('product_price', '<', 1000000);
             } else if ($_GET['price'] == 2) {
-                $products = $products->where('product_price', '>=', 100000)->where('product_price', '<=', 500000);
+                $products = $products->where('product_price', '>=', 1000000)->where('product_price', '<=', 5000000);
             } else if ($_GET['price'] == 3) {
-                $products = $products->where('product_price', '>=', 500000)->where('product_price', '<=', 1000000);
+                $products = $products->where('product_price', '>=', 5000000)->where('product_price', '<=', 10000000);
             } else if ($_GET['price'] == 4) {
-                $products = $products->where('product_price', '>=', 1000000)->where('product_price', '<=', 2000000);
+                $products = $products->where('product_price', '>=', 10000000)->where('product_price', '<=', 20000000);
             } else if ($_GET['price'] == 5) {
-                $products = $products->where('product_price', '>=', 2000000);
+                $products = $products->where('product_price', '>=', 20000000);
             }
         }
 //        $products = $products->paginate(12)->appends(\request()->query());
