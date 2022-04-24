@@ -41,8 +41,8 @@
                 @csrf
                 <div class="input-group">
                 <input type="text" class="form-control" placeholder="nhập voucher" id="coupon">
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-success">áp dụng</button>
+                <div class="input-group-append" >
+                    <button type="submit" class="btn btn-success" id="applyCoupon">áp dụng</button>
                 </div>
                 </div>
             </form>

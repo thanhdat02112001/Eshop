@@ -24,12 +24,14 @@ $(document).ready(function() {
                 if (response.status == 1) {
                     alertify.set('notifier','position','bottom-right');
                     alertify.success(response.message);
-                    url = '#'
+                    $("#coupon").read0nly=true;
+                    $("#applyCoupon").hide();
                 } else{
                     alertify.set('notifier','position','bottom-right');
                     alertify.error(response.message);
                 }
             }
         });
+        return false;
     })
 })

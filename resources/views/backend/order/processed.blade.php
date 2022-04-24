@@ -21,8 +21,8 @@
 						<div class="bootstrap-table">
 							<div class="table-responsive">
 								<a href="{{route('order.index')}}" class="btn btn-warning"><span class="glyphicon glyphicon-gift"></span>Đơn Chưa xử lý</a>
-                                {{-- <a class="btn btn-primary" href="{{route('order.export')}}">Export đơn trong tháng</a> --}}
-								<table class="table table-bordered" style="margin-top:20px;">
+                                <a class="btn btn-primary" id="downloadexcel">Export đơn</a>
+								<table class="table table-bordered" style="margin-top:20px;" id="realtable">
                                     <thead>
                                         <tr class="bg-primary">
                                             <th>Mã đơn hàng</th>
@@ -60,4 +60,12 @@
 
 	</div>
 	<!--end main-->
+    <script>
+        document.getElementById('downloadexcel').addEventListener('click', function()
+    {
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("#realtable"));
+    });
+    </script>
+
 @endsection

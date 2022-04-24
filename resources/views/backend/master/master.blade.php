@@ -23,6 +23,7 @@
 <script src="{{asset('backend/js/chart.min.js')}}"></script>
 <script src="{{asset('backend/js/chart-data.js')}}"></script>
 <script src="{{asset('backend/js/close-popup.js')}}"></script>
+<script src="{{asset('backend/js/table2excel.js')}}"></script>
 <script>
     function changeImg(input){
         //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới

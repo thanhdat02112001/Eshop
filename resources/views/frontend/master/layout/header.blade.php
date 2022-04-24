@@ -12,13 +12,13 @@
         </a>
         <div class="desk-menu collapse navbar-collapse justify-content-md-center" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item {{request()->segment(1) == '' ? 'active' : ''}}">
                     <a class="nav-link" href="/">TRANG CHỦ</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{request()->segment(1) == 'product' ? 'active' : ''}}">
                     <a class="nav-link" href="/product">BỘ SƯU TẬP</a>
                 </li>
-                <li class="nav-item lisanpham">
+                <li class="nav-item lisanpham {{request()->segment(1) == '#' ? 'active' : ''}}">
                     <a class="nav-link" href="#">Hỗ trợ tư vấn
                         <i class="fa fa-chevron-down" aria-hidden="true"></i>
                     </a>
@@ -35,13 +35,13 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{request()->segment(1) == 'introduce' ? 'active' : ''}}">
                     <a class="nav-link" href="/introduce">GIỚI THIỆU</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{request()->segment(1) == 'blog' ? 'active' : ''}}">
                     <a class="nav-link" href="/blog">BLOG</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {{request()->segment(1) == 'contact' ? 'active' : ''}}">
                     <a class="nav-link" href="/contact">LIÊN HỆ</a>
                 </li>
             </ul>
