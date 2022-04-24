@@ -109,7 +109,7 @@ function loadCart()
             $('#cart').html('');
             var parsed = jQuery.parseJSON(response)
             var value = parsed;
-            $('#cart').append($('<i class="fa fa-shopping-cart"></i> '+ value['totalcart']));
+            $('#cart').append($('<span class="badge badge-danger">Cart '+ value['totalcart'] +'</span>'));
         }
     });
 }

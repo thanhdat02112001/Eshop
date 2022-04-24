@@ -134,7 +134,7 @@
             </a>
             <a href="/cart">
                 <span class="">
-                    <button id="cart"><i class="fa fa-shopping-cart"></i></button>
+                    <button class="btn btn-danger" id="cart">Cart</button></span>
                 </span>
             </a>
             <button class="navbar-toggler" type="button" uk-toggle="target: #offcanvas-flip1" data-target="#navbarNav"
