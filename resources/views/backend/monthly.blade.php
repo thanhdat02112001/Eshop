@@ -63,7 +63,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"
                 integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg=="
                 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        {{-- <script>
+        <script>
             const ctx = document.getElementById('myChart').getContext('2d');
             const data = <?= json_encode($data) ?>;
             const myChart = new Chart(ctx, {
@@ -109,61 +109,6 @@
                     scales: {
                         y: {
                             beginAtZero: true
-                        }
-                    }
-                }
-            });
-        </script> --}}
-        <script>
-            const ctx = document.getElementById('myChart').getContext('2d');
-        
-            // Replace $data with the daily data from your backend
-            const data = <?= json_encode($data) ?>;
-        
-            // Generate labels for days of the month
-            const labels = Array.from({ length: 31 }, (_, i) => `Ngày ${i + 1}`);
-        
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'Biểu đồ doanh thu bán hàng hàng ngày trong tháng',
-                        data: data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        tension: 0.4, // Adds a curve to the line
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function (context) {
-                                    return `Doanh thu: ${context.raw.toLocaleString()} VND`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Ngày'
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Doanh thu (VND)'
-                            }
                         }
                     }
                 }

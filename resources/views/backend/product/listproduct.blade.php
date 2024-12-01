@@ -83,6 +83,8 @@
                                                                                         aria-hidden="true"></i> Sửa</a>
                                                     <a href="{{route('product-delete', $product->id)}}" class="btn btn-danger"><i class="fa fa-trash"
                                                                                         aria-hidden="true" onclick="return confirm('bạn có chắc chắn xóa không ?');"></i> Xóa</a>
+                                                    <a href="{{route('print-barcode', $product->id)}}" class="btn btn-success"><i class="fa fa-print"
+                                                        aria-hidden="true"></i> Print</a>
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -2,11 +2,13 @@
     <form role="search">
     </form>
     <ul class="nav menu">
-        <li class="{{request()->segment(2) == '' ? 'active' : ''}}"><a href="{{asset('/admin')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Tổng quan</a></li>
+        <li class="{{request()->segment(2) == '' ? 'active' : ''}}"><a href="{{asset('/admin')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Daily</a></li>
+        <li class="{{request()->segment(2) == 'monthly' ? 'active' : ''}}"><a href="{{asset('/admin/monthly')}}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Monthly</a></li>
         <li role="presentation" class="divider"></li>
         <li class="{{request()->segment(2) == 'category' ? 'active' : ''}}"><a href="{{asset('/admin/category')}}"><svg class="glyph stroked clipboard with paper"><use xlink:href="#stroked-clipboard-with-paper" /></svg> Danh Mục</a></li>
         <li class="{{request()->segment(2) == 'product' ? 'active' : ''}}"><a href="{{asset('/admin/product')}}"><svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg> Sản phẩm</a></li>
         <li class="{{request()->segment(2) == 'order' ? 'active' : ''}}"><a href="{{asset('/admin/order')}}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg> Đơn hàng</a></li>
+        <li class="{{request()->segment(2) == 'order-new' ? 'active' : ''}}"><a href="{{asset('/admin/order-new')}}"><svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad" /></svg>New order</a></li>
         <li class="{{request()->segment(2) == 'coupon' ? 'active' : ''}}"><a href="{{route('coupon.index')}}"><svg class="glyph stroked tag"><use xlink:href="#stroked-tag"/></svg>Giảm giá</a></li>
         <li role="presentation" class="divider"></li>
         <li class="{{request()->segment(2) == 'blog' ? 'active' : ''}}"><a href="{{asset('/admin/blog')}}"><svg class="glyph stroked pen tip"><use xlink:href="#stroked-pen-tip"/></svg>Tin tức</a></li>

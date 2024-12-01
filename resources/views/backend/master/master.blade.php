@@ -3,7 +3,7 @@
 
 <head>
     @include('backend/master/layout/head')
-
+    @yield('style')
 </head>
 <body>
 <!-- header -->
@@ -24,6 +24,7 @@
 <script src="{{asset('backend/js/chart-data.js')}}"></script>
 <script src="{{asset('backend/js/close-popup.js')}}"></script>
 <script src="{{asset('backend/js/table2excel.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 <script>
     function changeImg(input){
         //Nếu như tồn thuộc tính file, đồng nghĩa người dùng đã chọn file mới
@@ -44,6 +45,7 @@
     });
 
 </script>
+@yield('scripts')
 </body>
 
 </html>

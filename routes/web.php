@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\Coupon\CouponController;
 use App\Http\Controllers\Admin\Order\OrderController;
+use App\Http\Controllers\Admin\Product\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\Customer\CustomerController;
+use App\Http\Controllers\Frontend\ProductPage\ProductController as ProductPageProductController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
@@ -29,13 +31,14 @@ Route::group(['prefix' => 'login', 'middleware' => 'checkLogin'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
     //Route dashboard
     Route::get('/', [\App\Http\Controllers\Admin\AdminController::class, 'index']);
+    Route::get('/monthly', [\App\Http\Controllers\Admin\AdminController::class, 'monthly']);
     Route::get('/logout', [\App\Http\Controllers\Admin\AdminController::class, 'logout']);
     //Route product
-    Route::Group(["prefix" => "product"], function(){
+    Route::Group(["prefix" => "product"], function () {
 
         Route::get('/', [\App\Http\Controllers\Admin\Product\ProductController::class, "index"])->name('product-home');
 
-        Route::get('/create',[\App\Http\Controllers\Admin\Product\ProductController::class, "create"])->name('product-create');
+        Route::get('/create', [\App\Http\Controllers\Admin\Product\ProductController::class, "create"])->name('product-create');
 
         Route::post('/store', [\App\Http\Controllers\Admin\Product\ProductController::class, "store"])->name("product-store");
 
@@ -45,9 +48,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
 
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\Product\ProductController::class, "delete"])->name('product-delete');
 
+        Route::get('/{id}/print-barcode', [ProductController::class, 'printBarCode'])->name('print-barcode');
     });
     //Route category
-    Route::Group(["prefix" => "category"], function(){
+    Route::Group(["prefix" => "category"], function () {
 
         Route::get('/', [\App\Http\Controllers\Admin\Category\CategoryController::class, "index"])->name('category-home');
 
@@ -58,14 +62,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
         Route::post('/update/{id}', [\App\Http\Controllers\Admin\Category\CategoryController::class, "update"])->name('category-update');
 
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\Category\CategoryController::class, "delete"])->name('category-delete');
-
     });
     //Route user
-    Route::Group(["prefix" => "user"], function(){
+    Route::Group(["prefix" => "user"], function () {
 
         Route::get('/', [\App\Http\Controllers\Admin\User\UserController::class, "index"])->name('user-home');
 
-        Route::get('/create',[\App\Http\Controllers\Admin\User\UserController::class, "create"])->name('user-create');
+        Route::get('/create', [\App\Http\Controllers\Admin\User\UserController::class, "create"])->name('user-create');
 
         Route::post('/store', [\App\Http\Controllers\Admin\User\UserController::class, "store"])->name("user-store");
 
@@ -76,7 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
         Route::get('/delete/{id}', [\App\Http\Controllers\Admin\User\UserController::class, "delete"])->name("user-delete");
     });
     //Route order
-    Route::Group(["prefix" => "order"], function(){
+    Route::Group(["prefix" => "order"], function () {
         Route::get('/', [\App\Http\Controllers\Admin\Order\OrderController::class, "index"])->name('order.index');
         Route::get('/processed', [\App\Http\Controllers\Admin\Order\OrderController::class, "processed"])->name('order.processed');
         Route::get('/detail/{id}', [\App\Http\Controllers\Admin\Order\OrderController::class, "detail"])->name('order.detail');
@@ -84,9 +87,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
         Route::delete('/delete/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
         Route::get('/export', [OrderController::class, 'exportCSV'])->name('order.export');
     });
+    Route::get('/order-new', [OrderController::class, 'newOrder'])->name('order.new');
+    Route::post('/order-save', [OrderController::class, 'store'])->name('order.save');
 
     //Route blog
-    Route::Group(["prefix" => "blog"], function(){
+    Route::Group(["prefix" => "blog"], function () {
         Route::get('/', [\App\Http\Controllers\Admin\Blog\BlogController::class, "index"])->name('blog-home');
         Route::get('/create', [\App\Http\Controllers\Admin\Blog\BlogController::class, "create"])->name("blog-create");
         Route::post('/store', [\App\Http\Controllers\Admin\Blog\BlogController::class, "store"])->name("blog-store");
@@ -110,6 +115,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
 
 /////////Frontend///////
 
+Route::post('/products/search', [ProductController::class, 'search'])->name('product.search');
 /// Homepage route
 Route::get('/', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'index'])->name('client-index');
 Route::get('/introduce', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'introduce'])->name('client-introduce');

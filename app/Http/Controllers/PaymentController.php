@@ -33,83 +33,83 @@ class PaymentController extends Controller
         } else {
             //insert delivery
             $delivery =
-            [
-                'delivery_email' => $data['email'],
-                'delivery_phone' => $data['phone'],
-                'delivery_address' => $data['address'],
-                'delivery_note' => $data['note'],
-                'customer_name' => $data['name'],
-            ];
+                [
+                    'delivery_email' => $data['email'],
+                    'delivery_phone' => $data['phone'],
+                    'delivery_address' => $data['address'],
+                    'delivery_note' => $data['note'],
+                    'customer_name' => $data['name'],
+                ];
             //insert order
             $delivery = Delivery::create($delivery);
-            if($delivery) {
+            if ($delivery) {
                 $order =
-                [
-                    'order_code' => date("Ymd").$delivery->id,
-                    'order_status' => 0,
-                    'order_total' => $data['total'],
-                    'payment_type' => $data['paymentMethod'],
-                    'created_at' => date('YmdHis'),
-                ];
+                    [
+                        'order_code' => date("Ymd") . $delivery->id,
+                        'order_status' => 1,
+                        'order_total' => $data['total'],
+                        'payment_type' => $data['paymentMethod'],
+                        'created_at' => date('YmdHis'),
+                    ];
                 $delivery = Delivery::orderBy('id', 'DESC')->first();
             }
-            if($delivery->order()->create($order)) {
+            if ($delivery->order()->create($order)) {
                 //insert order-detail
                 $carts = session('cart');
                 foreach ($carts as $id => $cart) {
-                $order_detail =
-                [
-                    'order_id' => $delivery->order->id,
-                    'product_name' => $cart['name'],
-                    'product_price' => $cart['price'],
-                    'product_quantity' => $cart['quantity'],
-                ];
-                $delivery->order->orderDetails()->create($order_detail);
+                    $order_detail =
+                        [
+                            'order_id' => $delivery->order->id,
+                            'product_name' => $cart['name'],
+                            'product_price' => $cart['price'],
+                            'product_quantity' => $cart['quantity'],
+                        ];
+                    $delivery->order->orderDetails()->create($order_detail);
 
-                //cap nhat so luong da ban
+                    //cap nhat so luong da ban
 
-                $product_sale_old = Product::find($id)->value('product_sale');
-                $product_sale_new = $product_sale_old + $cart['quantity'];
-                Product::find($id)->update(
-                    [
-                        'product_sale' => $product_sale_new,
-                    ]
-                );
-                $cart_array[] = array(
-                    'product_name' => $cart['name'],
-                    'product_price' => $cart['price'],
-                    'product_quantity' => $cart['quantity'],
-                );
+                    $product_sale_old = Product::find($id)->value('product_sale');
+                    $product_sale_new = $product_sale_old + $cart['quantity'];
+                    Product::find($id)->update(
+                        [
+                            'product_sale' => $product_sale_new,
+                        ]
+                    );
+                    $cart_array[] = array(
+                        'product_name' => $cart['name'],
+                        'product_price' => $cart['price'],
+                        'product_quantity' => $cart['quantity'],
+                    );
                 }
 
 
 
-            // gửi mail
-            $now = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y H:i:s');
-            $orderIdFormat = date('dmY') . $delivery->order->id;
-            $title_mail = "Đơn hàng xác nhận ngày " . $now;
-            $shipping_array = array(
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'phone' => $data['phone'],
-                'address' => $data['address'],
-                'note' => $data['note'],
-                'payment_type' => $data['paymentMethod'],
-                'order_id' => $orderIdFormat,
-            );
+                // gửi mail
+                $now = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y H:i:s');
+                $orderIdFormat = date('dmY') . $delivery->order->id;
+                $title_mail = "Đơn hàng xác nhận ngày " . $now;
+                $shipping_array = array(
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'phone' => $data['phone'],
+                    'address' => $data['address'],
+                    'note' => $data['note'],
+                    'payment_type' => $data['paymentMethod'],
+                    'order_id' => $orderIdFormat,
+                );
 
 
-            Mail::send(
-                'mail.mail-order',
-                [
-                    'carts' => $cart_array,
-                    'shipping' => $shipping_array,
-                ],
-                function ($message) use ($title_mail, $data) {
-                    $message->to($data['email'])->subject($title_mail);
-                    $message->from($data['email'], $title_mail);
-                }
-            );
+                // Mail::send(
+                //     'mail.mail-order',
+                //     [
+                //         'carts' => $cart_array,
+                //         'shipping' => $shipping_array,
+                //     ],
+                //     function ($message) use ($title_mail, $data) {
+                //         $message->to($data['email'])->subject($title_mail);
+                //         $message->from($data['email'], $title_mail);
+                //     }
+                // );
                 Session::flash('success', 'Đơn hàng của bạn đã được lưu');
                 session()->forget('cart');
                 return redirect('/');
@@ -173,7 +173,9 @@ class PaymentController extends Controller
             $vnp_Url .= 'vnp_SecureHash=' . $vnpSecureHash;
         }
         $returnData = array(
-            'code' => '00', 'message' => 'success', 'data' => $vnp_Url
+            'code' => '00',
+            'message' => 'success',
+            'data' => $vnp_Url
         );
         if (isset($_POST['redirect'])) {
             return redirect($vnp_Url);
@@ -191,54 +193,53 @@ class PaymentController extends Controller
             $carts = session('cart');
             //insert delivery
             $delivery =
-            [
-                'delivery_email' => $data['email'],
-                'delivery_phone' => $data['phone'],
-                'delivery_address' => $data['address'],
-                'delivery_note' => $data['note'],
-                'customer_name' => $data['name'],
-            ];
+                [
+                    'delivery_email' => $data['email'],
+                    'delivery_phone' => $data['phone'],
+                    'delivery_address' => $data['address'],
+                    'delivery_note' => $data['note'],
+                    'customer_name' => $data['name'],
+                ];
             //insert order
             $delivery = Delivery::create($delivery);
-            if($delivery) {
+            if ($delivery) {
                 $order =
-                [
-                    'order_code' => date("Ymd").$delivery->id,
-                    'order_status' => 0,
-                    'order_total' => $data['total'],
-                    'payment_type' => $data['paymentMethod'],
-                    'created_at' => date('YmdHis'),
-                ];
+                    [
+                        'order_code' => date("Ymd") . $delivery->id,
+                        'order_status' => 0,
+                        'order_total' => $data['total'],
+                        'payment_type' => $data['paymentMethod'],
+                        'created_at' => date('YmdHis'),
+                    ];
                 $delivery = Delivery::orderBy('id', 'DESC')->first();
             }
-            if($delivery->order()->create($order)) {
+            if ($delivery->order()->create($order)) {
                 //insert order-detail
                 foreach ($carts as $id => $cart) {
-                $order_detail =
-                [
-                    'order_id' => $delivery->order->id,
-                    'product_name' => $cart['name'],
-                    'product_price' => $cart['price'],
-                    'product_quantity' => $cart['quantity'],
-                ];
-                $delivery->order->orderDetails()->create($order_detail);
+                    $order_detail =
+                        [
+                            'order_id' => $delivery->order->id,
+                            'product_name' => $cart['name'],
+                            'product_price' => $cart['price'],
+                            'product_quantity' => $cart['quantity'],
+                        ];
+                    $delivery->order->orderDetails()->create($order_detail);
 
-                //cap nhat so luong da ban
+                    //cap nhat so luong da ban
 
-                $product_sale_old = Product::find($id)->value('product_sale');
-                $product_sale_new = $product_sale_old + $cart['quantity'];
-                Product::find($id)->update(
-                    [
-                        'product_sale' => $product_sale_new,
-                    ]
-                );
-                $cart_array[] = array(
-                    'product_name' => $cart['name'],
-                    'product_price' => $cart['price'],
-                    'product_quantity' => $cart['quantity'],
-                );
+                    $product_sale_old = Product::find($id)->value('product_sale');
+                    $product_sale_new = $product_sale_old + $cart['quantity'];
+                    Product::find($id)->update(
+                        [
+                            'product_sale' => $product_sale_new,
+                        ]
+                    );
+                    $cart_array[] = array(
+                        'product_name' => $cart['name'],
+                        'product_price' => $cart['price'],
+                        'product_quantity' => $cart['quantity'],
+                    );
                 }
-
             }
 
             // gửi mail
