@@ -25,7 +25,7 @@
                         <span class="glyphicon glyphicon-signal icon-50" aria-hidden="true"></span>
                     </div>
                     <div class="col-sm-9 col-lg-8 widget-right">
-                        <div class="large">{{number_format($orders->sum('order_total'))}} đ</div>
+                        <div class="large">{{number_format($todayOrders->sum('order_total'))}} đ</div>
                         <div class="text-muted">Doanh thu</div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                         <svg class="glyph stroked notepad "><use xlink:href="#stroked-notepad"/></svg>
                     </div>
                     <div class="col-sm-9 col-lg-7 widget-right">
-                        <div class="large">{{count($orders)}}</div>
+                        <div class="large">{{count($todayOrders)}}</div>
                         <div class="text-muted">Đơn hàng thành công</div>
                     </div>
                 </div>

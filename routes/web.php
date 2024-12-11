@@ -116,52 +116,52 @@ Route::group(['prefix' => 'admin', 'middleware' => 'checkAdmin'], function () {
 /////////Frontend///////
 
 Route::post('/products/search', [ProductController::class, 'search'])->name('product.search');
-/// Homepage route
+// /// Homepage route
 Route::get('/', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'index'])->name('client-index');
-Route::get('/introduce', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'introduce'])->name('client-introduce');
-Route::get('/contact', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'contact'])->name('client-contact');
-Route::post('/contact/store', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'contactStore'])->name('client-contact-store');
-/// End HomePage route
+// Route::get('/introduce', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'introduce'])->name('client-introduce');
+// Route::get('/contact', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'contact'])->name('client-contact');
+// Route::post('/contact/store', [\App\Http\Controllers\Frontend\HomePage\HomepPageController::class, 'contactStore'])->name('client-contact-store');
+// /// End HomePage route
 
-/// Product route
-Route::get('/product', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'index'])->name('client-product-index');
-Route::get('/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'productDetail'])->name('client-product-detail');
-/// End product route
-//Customer
-Route::prefix('customer')->group(function () {
-    Route::get('/login', [CustomerController::class, 'getLogin'])->name('customer_get_login');
-    Route::post('/login', [CustomerController::class, 'postLogin'])->name('customer_post_login');
-    Route::get('/register', [CustomerController::class, 'getRegister'])->name('customer_get_register');
-    Route::post('/register', [CustomerController::class, 'postRegister'])->name('customer_post_register');
-    Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
-});
-//cart
-Route::post('/add-to-cart', [CartController::class, "addToCart"]);
-Route::get('/load-cart', [CartController::class, 'loadCart']);
-Route::get('/cart', [CartController::class, 'index']);
-Route::post('/update-cart', [CartController::class, 'updateCart']);
-Route::post('/delete', [CartController::class, 'deleteFromCart']);
-Route::post('/clear-all', [CartController::class, 'clearAll']);
-//counpon
-Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
+// /// Product route
+// Route::get('/product', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'index'])->name('client-product-index');
+// Route::get('/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'productDetail'])->name('client-product-detail');
+// /// End product route
+// //Customer
+// Route::prefix('customer')->group(function () {
+//     Route::get('/login', [CustomerController::class, 'getLogin'])->name('customer_get_login');
+//     Route::post('/login', [CustomerController::class, 'postLogin'])->name('customer_post_login');
+//     Route::get('/register', [CustomerController::class, 'getRegister'])->name('customer_get_register');
+//     Route::post('/register', [CustomerController::class, 'postRegister'])->name('customer_post_register');
+//     Route::get('/logout', [CustomerController::class, 'logout'])->name('logout');
+// });
+// //cart
+// Route::post('/add-to-cart', [CartController::class, "addToCart"]);
+// Route::get('/load-cart', [CartController::class, 'loadCart']);
+// Route::get('/cart', [CartController::class, 'index']);
+// Route::post('/update-cart', [CartController::class, 'updateCart']);
+// Route::post('/delete', [CartController::class, 'deleteFromCart']);
+// Route::post('/clear-all', [CartController::class, 'clearAll']);
+// //counpon
+// Route::post('/apply-coupon', [CartController::class, 'applyCoupon']);
 
-/// Blog route
-Route::get('/blog', [\App\Http\Controllers\Frontend\BlogPage\BlogPageController::class, 'index'])->name('client-blog-index');
-Route::get('/blog/{id}', [\App\Http\Controllers\Frontend\BlogPage\BlogPageController::class, 'detail'])->name('client-blog-detail');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// checkout
-Route::get('/checkout', [PaymentController::class, 'index'])->name('checkout');
-Route::post('/checkout', [PaymentController::class, 'store'])->name('checkout_store');
-Route::post('/checkout/vnpay', [PaymentController::class, 'vnpay'])->name('online-pay');
-Route::get('/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vnpay.return');
-//buy now
-Route::post('/buynow', [CartController::class, 'buyNow']);
+// /// Blog route
+// Route::get('/blog', [\App\Http\Controllers\Frontend\BlogPage\BlogPageController::class, 'index'])->name('client-blog-index');
+// Route::get('/blog/{id}', [\App\Http\Controllers\Frontend\BlogPage\BlogPageController::class, 'detail'])->name('client-blog-detail');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// // checkout
+// Route::get('/checkout', [PaymentController::class, 'index'])->name('checkout');
+// Route::post('/checkout', [PaymentController::class, 'store'])->name('checkout_store');
+// Route::post('/checkout/vnpay', [PaymentController::class, 'vnpay'])->name('online-pay');
+// Route::get('/vnpay/return', [PaymentController::class, 'vnpayReturn'])->name('vnpay.return');
+// //buy now
+// Route::post('/buynow', [CartController::class, 'buyNow']);
 
-//comment
-Route::post('/comment/store/product/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeProduct'])->name('client-comment-product-store');
-Route::post('/comment/store/blog/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeBlog'])->name('client-comment-blog-store');
+// //comment
+// Route::post('/comment/store/product/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeProduct'])->name('client-comment-product-store');
+// Route::post('/comment/store/blog/{id}', [\App\Http\Controllers\Frontend\Comment\CommentController::class, 'storeBlog'])->name('client-comment-blog-store');
 
-//rate
-Route::post('rate/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'rate'])->name('client-rate');
-//search
-Route::get('/search', [SearchController::class, "search"]);
+// //rate
+// Route::post('rate/product/{id}', [\App\Http\Controllers\Frontend\ProductPage\ProductController::class, 'rate'])->name('client-rate');
+// //search
+// Route::get('/search', [SearchController::class, "search"]);

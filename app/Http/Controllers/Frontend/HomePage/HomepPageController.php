@@ -10,22 +10,27 @@ use Illuminate\Http\Request;
 
 class HomepPageController extends Controller
 {
-    public function index () {
-        $sellProducts = Product::orderBy('product_sale', 'DESC')->paginate(8);
-        $newProducts = Product::orderBy('created_at', 'DESC')->paginate(8);
-        $blogs = Blog::orderBy('created_at', 'DESC')->paginate(3);
-        return view('frontend.index', compact('sellProducts', 'newProducts', 'blogs'));
+    public function index()
+    {
+        return redirect('/admin');
+        // $sellProducts = Product::orderBy('product_sale', 'DESC')->paginate(8);
+        // $newProducts = Product::orderBy('created_at', 'DESC')->paginate(8);
+        // $blogs = Blog::orderBy('created_at', 'DESC')->paginate(3);
+        // return view('frontend.index', compact('sellProducts', 'newProducts', 'blogs'));
     }
 
-    public function introduce () {
+    public function introduce()
+    {
         return view('frontend.introduce');
     }
 
-    public function contact () {
+    public function contact()
+    {
         return view('frontend.contact');
     }
 
-    public function contactStore (Request $request) {
+    public function contactStore(Request $request)
+    {
         $data = [
             'user_name' => $request->fullname,
             'user_email' => $request->email,

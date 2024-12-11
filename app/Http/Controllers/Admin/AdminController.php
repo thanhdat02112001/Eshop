@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Charts\AdminChart;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,6 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         $orders = Order::where('order_status', 1)->get();
+        $todayOrders = Order::whereDate('created_at', Carbon::today()->format('Y-m-d'))->get();
 
         // Fetch the total order amount grouped by day of the current month
         $totals = Order::where('order_status', 1)
@@ -38,12 +40,16 @@ class AdminController extends Controller
             // Adjust for zero-based indexing
             $data[$day - 1] = $totals[$index];
         }
-        return view('backend.index', compact('orders', 'data'));
+        return view('backend.index', compact('orders', 'data', 'todayOrders'));
     }
 
     public function monthly()
     {
         $orders = Order::where('order_status', 1)->get();
+        $monthlyOrders = Order::where('created_at', '>=', Carbon::now()->startOfMonth())
+            ->where('created_at', '<=', Carbon::now()->endOfMonth())
+            ->where('order_status', 1)
+            ->get();
         $totals = Order::where('order_status', 1)
             ->select(DB::raw("SUM(order_total) as sum"))
             ->whereYear('created_at', date('Y'))
@@ -60,7 +66,7 @@ class AdminController extends Controller
             $data[$month] = $totals[$index];
         }
 
-        return view('backend.monthly', compact('orders', 'data'));
+        return view('backend.monthly', compact('orders', 'data', 'monthlyOrders'));
     }
 
     public function logout()
