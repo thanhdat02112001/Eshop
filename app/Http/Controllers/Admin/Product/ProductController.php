@@ -57,7 +57,9 @@ class ProductController extends Controller
             }
             $imagesValue["total_image"] = count($images);
         }
-        $product->image()->create($imagesValue);
+        if (!empty($imagesValue)) {
+            $product->image()->create($imagesValue);
+        }
         $request->session()->flash("success", "thêm sản phầm thành công!");
         return redirect("/admin/product");
     }
