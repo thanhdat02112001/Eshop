@@ -93,7 +93,9 @@ class ProductController extends Controller
                 $imagesValue["image" . ($i + 1)] = $images[$i]->getClientOriginalName();
             }
         }
-        $product->image()->update($imagesValue);
+        if (!empty($imagesValue)) {
+            $product->image()->update($imagesValue);
+        }
         $request->session()->flash("success", "Sửa sản phầm thành công!");
         return redirect("/admin/product");
     }
@@ -101,7 +103,7 @@ class ProductController extends Controller
     public function delete($id)
     {
         $product = Product::find($id);
-        $product->image->delete();
+        $product->image()->delete();
         $product->delete();
         return redirect()->route('product-home');
     }
