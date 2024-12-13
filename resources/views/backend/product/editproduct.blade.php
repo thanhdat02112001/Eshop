@@ -80,7 +80,7 @@
                                         <label>Ảnh sản phẩm</label>
                                         <input id="img" type="file" name="image[]" class="form-control hidden" multiple
                                             onchange="changeImg(this)">
-                                        <img id="avatar" class="thumbnail" width="100%" height="350px" src="{{Storage::disk('public')->url($product->image->image1)}}">
+                                        <img id="avatar" class="thumbnail" width="100%" height="350px" src="{{Storage::disk('public')->url(@$product->image->image1)}}">
                                     </div>
                                     @error('image[]')
                                         <p class="text-danger">{{$message}}</p>
